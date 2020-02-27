@@ -1,26 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import logo from "./logo.svg";
+import "./App.css";
+import "./App.sass";
+import Content from "./components/Content";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import WindowDimensionsProvider from "./components/WindowDimensionsProvider";
+import items from "./data.json";
+import "bulma/css/bulma.css";
+import "./react_dates_overrides.css"
+import { ConnectedRouter } from "connected-react-router";
+import routes from "./routes";
+import Routes from "./routes";
 
-function App() {
+const App = ({ history }) => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <ConnectedRouter history={history}>
+        <Routes></Routes>
+      </ConnectedRouter>
   );
-}
+};
 
 export default App;
