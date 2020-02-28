@@ -26,8 +26,8 @@ export function Modal({ onClose, children, ...props}){
     const modalNode = useContext(Context);
     
     return modalNode ? ReactDOM.createPortal(
-        <Overlay style={{height: height}}>
-            <Dialog {...props} style={{height: height, width: width}}>
+        <Overlay style={{height: height, width: width, background: 'black'}}>
+            <Dialog {...props} style={{height: height, width: '100%'}}>
             <div onClick={onClose} style={{right: -widthAsText , position: "relative", fontSize: 24, color: "gray"}}><i class="fas fa-times"></i></div>
             {/* <button onClick={onClose}>Close</button> */}
 
@@ -46,21 +46,19 @@ const Container = styled.div`
 `;
 const Overlay = styled.div`
   animation: ${fadeIn} 200ms ease-out;
-  position: absolute;
-  top: -140px;
-  left: 0;
+  position: fixed;
+//   top: -140px;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100vh;
   z-index: 100;
-  background: black;
+//   background: black;
   overflow-x: hidden;
-//   background: rgba(0, 0, 0, 0.3);
 `;
 const Dialog = styled.div`
   background: white;
-  border-radius: 0px;
+//   border-radius: 0px;
   padding: 10px;
   position: absolute;
   top: 50%;
