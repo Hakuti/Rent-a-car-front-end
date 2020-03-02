@@ -38,3 +38,10 @@
   font-weight: normal;
   font-style: normal;
 }
+
+@font-face {
+  font-family: 'Roboto-Italic';
+  src: url('./fonts/Roboto-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}

@@ -7,11 +7,13 @@ import availabilityModalReducer from './availabilityModalReducer';
 import currentWidth from './currentWidthReducer';
 import oldWidth from './oldWidthReducer';
 import priceModalReducer from './priceModalReducer';
+import wizardModalReducer from './wizardModalReducer';
 // import counterReducer from './counter'
 
 const rootReducer = (history) => combineReducers({
   availabilityModal: availabilityModalReducer,
   priceModal: priceModalReducer,
+  wizardModal: wizardModalReducer,
   count: locationReducer,
   vehicle: hostVehicleReducer,
   currentWidth: currentWidth,

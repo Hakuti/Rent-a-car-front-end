@@ -8,9 +8,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { ModalProvider, Modal } from "./GeneralModal";
 import { openModal } from "./Redux/Actions/availabilityModal";
 import { openPriceModal } from "./Redux/Actions/priceModal";
+import { openWizardModal } from "./Redux/Actions/wizardModal";
+
 
 import AvailabilityModalContent from "./components/AvailabilityModal";
 import PriceModalContent from "./components/PriceModal";
+import WizardModal from "./components/WizardModal";
 
 // import NoMatch from '../components/NoMatch'
 
@@ -41,8 +44,12 @@ const Routes = () => {
   const isPriceModalOpen = useSelector(
     state => state.priceModal.openPriceModal
   );
-  console.log(isPriceModalOpen);
-  console.log(isPriceModalOpen);
+  const isWizardModalOpen = useSelector(
+    state => state.wizardModal.openWizardModal
+  );
+  // console.log(isPriceModalOpen);
+  // console.log(isPriceModalOpen);
+  console.log(isWizardModalOpen);
   const dispatch = useDispatch();
 
   return (
@@ -70,6 +77,19 @@ const Routes = () => {
             }}
           >
             <PriceModalContent></PriceModalContent>
+          </Modal>
+        )}
+        {isWizardModalOpen && (
+          <Modal
+            onClose={() => dispatch(openWizardModal(false))}
+            style={{
+              width: 600,
+              textAlign: "center",
+              zIndex: 1001
+            }}
+            xButton={"white"}
+          >
+            <WizardModal></WizardModal>
           </Modal>
         )}
         <NavBar></NavBar>

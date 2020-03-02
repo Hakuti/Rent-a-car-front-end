@@ -22,13 +22,14 @@ export function ModalProvider({children}){
 export function Modal({ onClose, children, ...props}){
     const {height, width} = useWindowDimensions();
     const widthAsText = width - 40
-
+    const color = props.xButton ? props.xButton : "gray"
+    console.log(color);
     const modalNode = useContext(Context);
     
     return modalNode ? ReactDOM.createPortal(
         <Overlay style={{height: height, width: width, background: 'black'}}>
             <Dialog {...props} style={{height: height, width: '100%'}}>
-            <div onClick={onClose} style={{right: -widthAsText , position: "relative", fontSize: 24, color: "gray"}}><i class="fas fa-times"></i></div>
+            <div onClick={onClose} style={{right: -widthAsText , position: "relative", fontSize: 24, color: color, zIndex: 1}}><i class="fas fa-times"></i></div>
             {/* <button onClick={onClose}>Close</button> */}
 
                 {children}

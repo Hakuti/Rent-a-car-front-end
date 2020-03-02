@@ -1,6 +1,14 @@
 import React from "react";
 import VehicleItem from "../VehicleItem";
+import { useSelector, useDispatch } from "react-redux";
+import {openWizardModal} from "../../Redux/Actions/wizardModal";
 export default function Vehicles() {
+  const isWizardModalOpen = useSelector(
+    state => state.wizardModal.openWizardModal
+  );
+  const dispatch = useDispatch();
+ 
+  console.log(isWizardModalOpen);
   // console.log("Currently grabbing info");
   let tempCarData = [
     { make: "Honda", model: "Accord", img: "" },
@@ -12,7 +20,15 @@ export default function Vehicles() {
   const Cars = () => {
     tempCarData = tempCarData.map(value => {
       return (
-        <div style={{marginTop: 10, position: "relative", display: "flex", flex: 1, justifyContent: "center"}}>
+        <div
+          style={{
+            marginTop: 10,
+            position: "relative",
+            display: "flex",
+            flex: 1,
+            justifyContent: "center"
+          }}
+        >
           <VehicleItem></VehicleItem>
         </div>
       );
@@ -22,7 +38,17 @@ export default function Vehicles() {
 
   return (
     <div>
-      <div style={{ ...styles.addVehicle }}>Add New Vehicle +</div>
+      <div
+        style={{ ...styles.addVehicle }}
+        onClick={() => {
+          console.log("Clicked");
+          dispatch(openWizardModal(true));
+          console.log(isWizardModalOpen);
+        }}
+      >
+        {/* {{isWizardModalOpen}} */}
+        Add New Vehicle +
+      </div>
       <div style={{ ...styles.carsWrapper }}>
         <Cars></Cars>
       </div>
@@ -46,12 +72,12 @@ const styles = {
     textAlign: "center",
     fontFamily: "Roboto-Bold",
     position: "relative",
+    cursor: "pointer"
     // zIndex: 99,
     // bottom: -300
   },
   carsWrapper: {
     marginTop: 20,
     position: "relative"
-
   }
 };
