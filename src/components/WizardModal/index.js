@@ -28,6 +28,7 @@ export default function WizardModal() {
   const isModalOpen = useSelector(state => state.wizardModal.openWizardModal);
   const dispatch = useDispatch();
   const { height, width } = useWindowDimensions();
+  const bodyHeight = height - 100 - 100
   return (
     <div>
       <div style={{ ...styles.header, width: width }}></div>
@@ -37,6 +38,7 @@ export default function WizardModal() {
           onSubmit={onSubmit}
         >
           <Wizard.Page>
+            <div style={{overflowY: "scroll", height: bodyHeight}}>
             <div>
               <label>First Name</label>
               <Field
@@ -109,7 +111,55 @@ export default function WizardModal() {
               />
               <Error name="firstName" />
             </div>
-            
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            </div>
           </Wizard.Page>
           <Wizard.Page
         validate={values => {
@@ -164,7 +214,7 @@ const styles = {
     marginTop: 80,
     // height: 100,
     width: "100%",
-    background: "pink"
+    background: "pink",
   },
   textTest: {
     fontSize: 40

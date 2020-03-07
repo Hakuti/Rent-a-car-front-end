@@ -125,7 +125,7 @@ export default class Wizard extends React.Component {
             <div style={{ ...styles.currentPage }}>
               Step {page + 1} of {pageDefined.length} - {currentPage.title}
             </div>
-            <div className="buttons">
+            {/* <div className="buttons"> */}
               {this.returnValues}
               {page > 0 && (
                 <div
@@ -161,9 +161,9 @@ export default class Wizard extends React.Component {
                   Submit
                 </button>
               )}
-            </div>
+            {/* </div> */}
             {/* <pre>{this.returnValues}</pre> */}
-            <pre>{JSON.stringify(values, 0, 2)}</pre>
+            {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
           </form>
         )}
       </Form>
