@@ -49,6 +49,66 @@ export default function WizardModal() {
               />
               <Error name="firstName" />
             </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
+            <div>
+              <label>First Name</label>
+              <Field
+                name="firstName"
+                component="input"
+                type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
+                placeholder="First Name"
+                validate={required}
+              />
+              <Error name="firstName" />
+            </div>
             
           </Wizard.Page>
           <Wizard.Page
