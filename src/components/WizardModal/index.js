@@ -33,7 +33,7 @@ export default function WizardModal() {
       <div style={{ ...styles.header, width: width }}></div>
       <div style={{ ...styles.bodyContent }}>
         <Wizard
-          initialValues={{ employed: true, stooge: "larry" }}
+          // initialValues={{ employed: true, stooge: "larry" }}
           onSubmit={onSubmit}
         >
           <Wizard.Page>
@@ -43,22 +43,13 @@ export default function WizardModal() {
                 name="firstName"
                 component="input"
                 type="text"
+                style={{width: 300, height: 50, fontSize: 22, margin: "0 auto", marginTop: "10px"}}
                 placeholder="First Name"
                 validate={required}
               />
               <Error name="firstName" />
             </div>
-            <div>
-              <label>Last Name</label>
-              <Field
-                name="lastName"
-                component="input"
-                type="text"
-                placeholder="Last Name"
-                validate={required}
-              />
-              <Error name="lastName" />
-            </div>
+            
           </Wizard.Page>
           <Wizard.Page
         validate={values => {
@@ -111,7 +102,7 @@ const styles = {
   },
   bodyContent: {
     marginTop: 80,
-    height: 100,
+    // height: 100,
     width: "100%",
     background: "pink"
   },

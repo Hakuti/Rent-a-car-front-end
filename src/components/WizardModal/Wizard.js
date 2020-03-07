@@ -102,8 +102,8 @@ export default class Wizard extends React.Component {
     const activePage = React.Children.toArray(children)[page];
     const isLastPage = page === React.Children.count(children) - 1;
     const pageDefined = [
-      { title: "Details", page: 0 },
-      { title: "Shipper", page: 1 }
+      { title: "Details", page: 0, description: "Add Car Details" },
+      { title: "Registration", page: 1, description: "Add Car Registration" }
     ];
     const { prevPage, currentPage } = this.returnValues(pageDefined, page);
     console.log(prevPage);
@@ -121,9 +121,9 @@ export default class Wizard extends React.Component {
           <form onSubmit={handleSubmit}>
             {activePage}
             <div>{prevPage ? prevPage.title : null}</div>
-            <div style={{ ...styles.wizardHeaderTitle }}>Add Car Details</div>
+        <div style={{ ...styles.wizardHeaderTitle }}>{currentPage.description}</div>
             <div style={{ ...styles.currentPage }}>
-              Step {page} of 6 - {currentPage.title}
+              Step {page + 1} of {pageDefined.length} - {currentPage.title}
             </div>
             <div className="buttons">
               {this.returnValues}
@@ -143,7 +143,7 @@ export default class Wizard extends React.Component {
                       style={{ display: "inline", marginLeft: 5, fontSize: 16, fontFamily: 'Roboto-Italic', alignSelf: "center" }}
                     >
                       {"  "}
-                      All Cars
+                      Back to {prevPage ? prevPage.title : null}
                     </div>
                   </div>
                 </div>
@@ -155,9 +155,9 @@ export default class Wizard extends React.Component {
                 //   « Previous
                 // </button>
               )}
-              {!isLastPage && <button type="submit">Next »</button>}
+              {!isLastPage && <button type="submit" style={{...styles.nextButton}}>Next »</button>}
               {isLastPage && (
-                <button type="submit" disabled={submitting}>
+                <button type="submit" disabled={submitting} style={{...styles.nextButton}}>
                   Submit
                 </button>
               )}
@@ -176,7 +176,22 @@ const styles = {
     position: "absolute",
     top: 10,
     left: 0,
-    zIndex: 100
+    zIndex: 100,
+  },
+  nextButton: {
+    position: "absolute",
+    bottom: 0,
+    zIndex: 100,
+    border: 0,
+    borderRadius: 0,
+    background: "black",
+    color: "white",
+    fontSize: 30,
+    width: "100%",
+    height: 80,
+    left: 0,
+    fontFamily: "Roboto-Medium",
+    textAlign: "center"
   },
   currentPage: {
     position: "absolute",
