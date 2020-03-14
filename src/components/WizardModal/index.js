@@ -59,7 +59,7 @@ export default function WizardModal() {
     if (props.input.onChange) {
       props.input.onChange(e);
     }
-    if(ref && (!isKeyPress)){
+    if (ref && !isKeyPress) {
       ref.current.focus();
     }
   };
@@ -69,7 +69,7 @@ export default function WizardModal() {
       console.log("Yes");
       ref.current.focus();
     }
-  }
+  };
 
   /*
     This code is gonna be filled with alot of Refs for focusing to next forms.
@@ -131,6 +131,7 @@ export default function WizardModal() {
                       <input
                         onChange={e => onChangeConst(e, props, hwyMPG, true)}
                         onKeyPress={e => onKeyPressConst(e, hwyMPG)}
+                        style={{...styles.smallInput}}
                         ref={cityMPG}
                       />
                     </div>
@@ -139,10 +140,18 @@ export default function WizardModal() {
                 <Error name="cityMPG" />
               </div>
               <div>
-                <label>hwyMPG</label>
+                <label>hwy MPG</label>
+                <div>
                 <Field name="hwyMPG" validate={required}>
-                  {props => <input ref={hwyMPG}></input>}
+                  {props => (
+                    <input
+                      ref={hwyMPG}
+                      onChange={e => onChangeConst(e, props, null, true)}
+                      style={{ ...styles.smallInput }}
+                    ></input>
+                  )}
                 </Field>
+                </div>
                 <Error name="hwyMPG" />
               </div>
             </div>
@@ -211,5 +220,10 @@ const styles = {
     left: 0,
     height: 30,
     background: "orange"
+  },
+  smallInput: {
+    width: "50%",
+    height: 40,
+    fontSize: 22
   }
 };
