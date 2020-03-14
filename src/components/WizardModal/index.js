@@ -99,6 +99,7 @@ export default function WizardModal() {
                       <Select
                         onChange={e => onChangeConst(e, props, model)}
                         options={Make}
+                        value={props.input.value}
                         searchable
                         autoFocus
                       />
@@ -116,6 +117,7 @@ export default function WizardModal() {
                         onChange={e => onChangeConst(e, props, cityMPG)}
                         options={Make}
                         ref={model}
+                        value={props.input.value}
                         searchable
                       />
                     </div>
@@ -133,6 +135,7 @@ export default function WizardModal() {
                         onKeyPress={e => onKeyPressConst(e, hwyMPG)}
                         style={{...styles.smallInput}}
                         ref={cityMPG}
+                        value={props.input.value}
                       />
                     </div>
                   )}
@@ -148,6 +151,7 @@ export default function WizardModal() {
                       ref={hwyMPG}
                       onChange={e => onChangeConst(e, props, null, true)}
                       style={{ ...styles.smallInput }}
+                      value={props.input.value}
                     ></input>
                   )}
                 </Field>
