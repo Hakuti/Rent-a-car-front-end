@@ -52,7 +52,10 @@ export default function WizardModal() {
   const [make, setMake] = useState({});
   const hwyMPG = useRef(null);
   const cityMPG = useRef(null);
-
+  const numOfSeats = useRef(null);
+  const gasGrade = useRef(null);
+  const numOfDoors = useRef(null);
+  const scrollToRef = (ref) =>{ console.log(ref); window.scrollTo(0, ref.current.offsetTop)}   
   const onChangeConst = (e, props, ref, isKeyPress) => {
     console.log(ref);
     console.log(props);
@@ -64,11 +67,20 @@ export default function WizardModal() {
     }
   };
 
-  const onKeyPressConst = (e, ref) => {
-    if (e.nativeEvent.keyCode === 13) {
+  const onKeyPressConst = (e, ref, nextItemIsDiv) => {
+    if (e.nativeEvent.keyCode === 13 && !nextItemIsDiv) {
       console.log("Yes");
+      console.log(ref);
       ref.current.focus();
     }
+    if(e.nativeEvent.keyCode === 13 && nextItemIsDiv){
+      console.log("Here in scrollTo instead");
+      console.log(ref);
+      // scrollToRef(ref);
+      ref.current.scrollIntoView({ behavior: "smooth" })
+      
+    }
+    
   };
 
   /*
@@ -133,7 +145,7 @@ export default function WizardModal() {
                       <input
                         onChange={e => onChangeConst(e, props, hwyMPG, true)}
                         onKeyPress={e => onKeyPressConst(e, hwyMPG)}
-                        style={{...styles.smallInput}}
+                        style={{ ...styles.smallInput }}
                         ref={cityMPG}
                         value={props.input.value}
                       />
@@ -145,18 +157,68 @@ export default function WizardModal() {
               <div>
                 <label>hwy MPG</label>
                 <div>
-                <Field name="hwyMPG" validate={required}>
-                  {props => (
-                    <input
-                      ref={hwyMPG}
-                      onChange={e => onChangeConst(e, props, null, true)}
-                      style={{ ...styles.smallInput }}
-                      value={props.input.value}
-                    ></input>
-                  )}
-                </Field>
+                  <Field name="hwyMPG" validate={required}>
+                    {props => (
+                      <input
+                        ref={hwyMPG}
+                        onChange={e => onChangeConst(e, props, null, true)}
+                        onKeyPress={e => onKeyPressConst(e, numOfDoors, true)}
+                        style={{ ...styles.smallInput }}
+                        value={props.input.value}
+                      ></input>
+                    )}
+                  </Field>
                 </div>
                 <Error name="hwyMPG" />
+              </div>
+              <div>
+                <label>number of seats</label>
+                <div>
+                  <Field name="numOfSeats" validate={required}>
+                    {props => (
+                      <div ref={numOfSeats} style={{display: "flex", background: "red"}}>
+                        <div style={{...styles.numOfSeats}} onClick={()=> {console.log("1")}}>1</div>
+                        <div style={{...styles.numOfSeats}}>2</div>
+                        <div style={{...styles.numOfSeats}}>3</div>
+                        <div style={{...styles.numOfSeats}}>4</div>
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <Error name="numOfSeats" />
+              </div>
+              <div>
+                <label>Gasgrade</label>
+                <Field name="Gasgrade">
+                  {props => (
+                    <div>
+                      <Select
+                        onChange={e => onChangeConst(e, props, numOfDoors)}
+                        options={Make}
+                        ref={gasGrade}
+                        value={props.input.value}
+                        searchable
+                      />
+                    </div>
+                  )}
+                </Field>
+                <Error name="Gasgrade" />
+              </div>
+              <div>
+                <label>number of doors</label>
+                <div>
+                  <Field name="numOfDoors" validate={required}>
+                    {props => (
+                      <div ref={numOfDoors} style={{display: "flex", background: "red"}}>
+                        <div style={{...styles.numOfSeats}} onClick={()=> {console.log("1")}}>1</div>
+                        <div style={{...styles.numOfSeats}}>2</div>
+                        <div style={{...styles.numOfSeats}}>3</div>
+                        <div style={{...styles.numOfSeats}}>4</div>
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <Error name="numOfDoors" />
               </div>
             </div>
           </Wizard.Page>
@@ -229,5 +291,11 @@ const styles = {
     width: "50%",
     height: 40,
     fontSize: 22
+  },
+  numOfSeats: {
+    padding: 50,
+    background: "white",
+    margin: 5,
+    cursor: "pointer"
   }
 };
