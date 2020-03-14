@@ -293,9 +293,13 @@ const styles = {
     fontSize: 22
   },
   numOfSeats: {
-    padding: 50,
+
+    paddingTop: 50,
+    paddingBottom: 50,
+    width: "25%",
     background: "white",
     margin: 5,
-    cursor: "pointer"
+    cursor: "pointer",
+    textAlign: "center"
   }
 };
