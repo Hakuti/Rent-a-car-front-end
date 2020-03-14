@@ -157,13 +157,14 @@ export default class Wizard extends React.Component {
               )}
               {!isLastPage && <button type="submit" style={{...styles.nextButton}}>Next »</button>}
               {isLastPage && (
+                
                 <button type="submit" disabled={submitting} style={{...styles.nextButton}}>
                   Submit
                 </button>
               )}
             {/* </div> */}
             {/* <pre>{this.returnValues}</pre> */}
-            {/* <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+            <pre style={{background: "white", zIndex: 200, height: 100, bottom: 160, position: "absolute"}}>{JSON.stringify(values, 0, 2)}</pre>
           </form>
         )}
       </Form>
