@@ -6,6 +6,7 @@ import { Make } from "../../Constants/WizardConstants";
 import { useWindowDimensions } from "../../components/WindowDimensionsProvider";
 import { Field } from "react-final-form";
 import Wizard from "./Wizard";
+import _ from 'lodash';
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 const onSubmit = async values => {
@@ -31,6 +32,15 @@ const searchBoxRequire = value => {
   }
   return "Required";
 };
+//Validation for Box to be filled
+// const boxRequired = value => (!_.isEmpty(value) ? undefined: "Required");
+const boxRequired = value => {
+  console.log(value);
+ let isEmpty = _.isEmpty(value)
+ 
+  console.log(isEmpty)
+}
+// const required = value => (value.numOfSeats ?)
 // const handleKeyPress = (node, event) => {
 //   // console.log(node);
 //   // console.log(event);
@@ -42,11 +52,113 @@ const searchBoxRequire = value => {
 // }
 const container = React.createRef();
 
+
+const ButtonComponent = (props) => {
+  const styles = {
+    box: {
+      width: "25%",
+      paddingTop: 25,
+      paddingBottom: 25,
+      background: "white",
+      textAlign: "center",
+      margin: 5
+    },
+    borderHighlight: {
+      border: "solid 3px orange"
+    }
+  }
+  const [highlight, setHighlighted] = useState(props.highlight);
+  const checkIt = (e) => {
+    let selected = props.selectCallBack({id: props.id, label: props.label, highlight: highlight}, props.index);
+    console.log(selected);
+    if(selected.highlight == true){
+      props.onChange({id: props.id, label: props.label}, props, null, null);
+    }else {
+      props.onChange({}, props, null, null);
+    }
+  }
+  //Item here is clicked and needs to return back that it has been clicked to Parent
+  //Parent then needs to inform if such an item is ready to be highlighted or not
+  // const itemClicked = () => {
+
+  // }
+  return(
+    <div key={props.id} style={ props.highlight ? {...styles.box, ...styles.borderHighlight}: {...styles.box}} onClick={checkIt}>{props.label}</div>
+  )
+
+}
+
+const MultipleButton = (props) => {
+  console.log(props.input.value);
+  let secArr = []
+  let x = 1;
+  if(x){
+    console.log("Test");
+  }
+  for(let item of props.options){
+    if(props.input.value.id == item.id){
+      console.log("Here");
+      item.highlight = true
+      console.log(item);
+      secArr.push(item);
+    }
+    if(props.input.value.id !== item.id){
+      item.highlight = false;
+      secArr.push(item)
+    }
+  }
+  console.log(props.options);
+  console.log(secArr);
+  // const [arr, setArr] = useState([{id: 1, label: 1, highlight: false}, {id: 2, label: 2, highlight: false}])
+  const [arr, setArr] = useState(secArr)
+  const callBack = (selected, index) => {
+    /**
+     * First step is to find the currently highlighted if there is any
+     */
+    let currentlyHighlightedItemIfAny;
+    for(let item of arr){
+      if(item.highlight == true){
+        currentlyHighlightedItemIfAny = item
+      }
+    }
+    if(currentlyHighlightedItemIfAny){
+      if(currentlyHighlightedItemIfAny.id === selected.id){
+        
+        arr[index].highlight = false 
+        let newArr = arr
+        setArr(newArr);
+        return(newArr[index]);
+      }else if(currentlyHighlightedItemIfAny.id !== selected.id){
+        
+        let indexOfHighlightedItem = arr.indexOf(currentlyHighlightedItemIfAny);
+        arr[indexOfHighlightedItem].highlight = false;
+        arr[index].highlight = true;
+        let newArr = arr;
+        setArr(newArr);
+        return(newArr[index])
+      }
+    }else{
+      arr[index].highlight = true;
+      let newArr = arr;
+      setArr(newArr);
+      return(newArr[index])
+    }
+    
+  }
+  const items = arr.map((element, index) => (
+    <ButtonComponent id={element.id} index={index} label={element.label} highlight={element.highlight} selectCallBack={callBack} {...props} ></ButtonComponent>
+    // <p key={element.id} onClick={{}}>Hello from {element.label}!</p>
+  ))
+  return items
+
+}
+
+
 export default function WizardModal() {
   const isModalOpen = useSelector(state => state.wizardModal.openWizardModal);
   const dispatch = useDispatch();
   const { height, width } = useWindowDimensions();
-  const bodyHeight = height - 100 - 100;
+  const bodyHeight = height - 100 - 60;
   const [showDropDown, setShowDropDown] = useState(false);
   const model = useRef(null);
   const [make, setMake] = useState({});
@@ -55,11 +167,24 @@ export default function WizardModal() {
   const numOfSeats = useRef(null);
   const gasGrade = useRef(null);
   const numOfDoors = useRef(null);
+  const numOfDoorOptions = [{id: 1, label: 1}, {id: 2, label: 2}];
   const scrollToRef = (ref) =>{ console.log(ref); window.scrollTo(0, ref.current.offsetTop)}   
   const onChangeConst = (e, props, ref, isKeyPress) => {
     console.log(ref);
     console.log(props);
+    console.log(e);
     if (props.input.onChange) {
+      props.input.onChange(e);
+    }
+    if (ref && !isKeyPress) {
+      ref.current.focus();
+    }
+  };
+  const onChangeBoxOptions = (e, props, ref, isKeyPress) => {
+    console.log(ref);
+    console.log(props);
+    if (props.input.onChange) {
+      
       props.input.onChange(e);
     }
     if (ref && !isKeyPress) {
@@ -83,15 +208,6 @@ export default function WizardModal() {
     
   };
 
-  /*
-    This code is gonna be filled with alot of Refs for focusing to next forms.
-  */
-
-  /* 
-  Okay so I need to attach a ref to my input field, that will bring up my dropdown
-  The dropdown will select in a few ways, when focus is lost
-  
-  */
 
   return (
     <div>
@@ -174,13 +290,10 @@ export default function WizardModal() {
               <div>
                 <label>number of seats</label>
                 <div>
-                  <Field name="numOfSeats" validate={required}>
+                  <Field name="numOfSeats" validate={boxRequired}>
                     {props => (
-                      <div ref={numOfSeats} style={{display: "flex", background: "red"}}>
-                        <div style={{...styles.numOfSeats}} onClick={()=> {console.log("1")}}>1</div>
-                        <div style={{...styles.numOfSeats}}>2</div>
-                        <div style={{...styles.numOfSeats}}>3</div>
-                        <div style={{...styles.numOfSeats}}>4</div>
+                      <div ref={numOfSeats} style={{display: "flex", background: ""}}>
+                        <MultipleButton options={numOfDoorOptions} {...props} onChange={onChangeBoxOptions}></MultipleButton>
                       </div>
                     )}
                   </Field>
@@ -207,9 +320,9 @@ export default function WizardModal() {
               <div>
                 <label>number of doors</label>
                 <div>
-                  <Field name="numOfDoors" validate={required}>
+                  <Field name="numOfDoors" >
                     {props => (
-                      <div ref={numOfDoors} style={{display: "flex", background: "red"}}>
+                      <div ref={numOfDoors} style={{display: "flex", background: ""}}>
                         <div style={{...styles.numOfSeats}} onClick={()=> {console.log("1")}}>1</div>
                         <div style={{...styles.numOfSeats}}>2</div>
                         <div style={{...styles.numOfSeats}}>3</div>
@@ -272,7 +385,7 @@ const styles = {
     left: 0
   },
   bodyContent: {
-    marginTop: 80,
+    marginTop: 50,
     // height: 100,
     width: "100%",
     background: "pink"
@@ -301,5 +414,13 @@ const styles = {
     margin: 5,
     cursor: "pointer",
     textAlign: "center"
+  },
+  customButton: {
+    width: "25",
+    paddingTop: 25,
+    paddingBottom: 25
+  },
+  customButtonSelected: {
+    border: "solid black 3px"
   }
 };

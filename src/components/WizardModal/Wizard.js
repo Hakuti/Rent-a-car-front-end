@@ -189,7 +189,7 @@ const styles = {
     color: "white",
     fontSize: 30,
     width: "100%",
-    height: 80,
+    height: 60,
     left: 0,
     fontFamily: "Roboto-Medium",
     textAlign: "center"
