@@ -27,6 +27,7 @@ const make = ["Honda", "Toyota", "Nissan"];
 const required = value => (value ? undefined : "Required");
 //Validation for searchbox to be filled
 const searchBoxRequire = value => {
+  console.log(value)
   if (make.indexOf(value) > -1) {
     return undefined;
   }
@@ -214,10 +215,25 @@ export default function WizardModal() {
       <div style={{ ...styles.header, width: width }}></div>
       <div style={{ ...styles.bodyContent }}>
         <Wizard
+        
           // initialValues={{ employed: true, stooge: "larry" }}
           onSubmit={onSubmit}
         >
-          <Wizard.Page>
+          <Wizard.Page
+            validate={values => {
+              const errors = {};
+              if (!values.Model) {
+                errors.Model = "Required";
+              }
+              if(_.isEmpty(values.numOfSeats)){
+                errors.numOfSeats = "Required";
+              }
+              // if (!values.favoriteColor) {
+              //   errors.favoriteColor = "Required";
+              // }
+              return errors;
+            }}
+          >
             <div style={{ overflowY: "scroll", height: bodyHeight }}>
               <div>
                 <label>Make</label>
@@ -246,6 +262,7 @@ export default function WizardModal() {
                         options={Make}
                         ref={model}
                         value={props.input.value}
+                        validate={searchBoxRequire}
                         searchable
                       />
                     </div>
