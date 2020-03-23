@@ -80,7 +80,7 @@ export default function WizardModal() {
       ref.current.focus();
     }
   };
-  const onChangeBoxOptions = (e, props, ref, nextItemIsDiv, selfRefToBlur) => {
+  const onChangeBoxOptions = (e, props, ref, nextItemIsDiv) => {
     console.log(ref);
     console.log(props);
     if (props.input.onChange) {
@@ -88,7 +88,7 @@ export default function WizardModal() {
       props.input.onChange(e);
     }
     if(ref && nextItemIsDiv){
-      selfRefToBlur.blur();
+      // selfRefToBlur.blur();
       ref.current.scrollIntoView({ behavior: "smooth" });
       //Blur the input in order to scroll into view correctly.
       // selfRefToBlur.blur();
@@ -98,7 +98,7 @@ export default function WizardModal() {
     }
   };
 
-  const onKeyPressConst = (e, ref, nextItemIsDiv) => {
+  const onKeyPressConst = (e, ref, nextItemIsDiv, selfRefToBlur) => {
     if (e.nativeEvent.keyCode === 13 && !nextItemIsDiv) {
       console.log("Yes");
       console.log(ref);
@@ -108,6 +108,7 @@ export default function WizardModal() {
       console.log("Here in scrollTo instead");
       console.log(ref);
       // scrollToRef(ref);
+      selfRefToBlur.current.blur();
       ref.current.scrollIntoView({ behavior: "smooth" });
     }
   };
