@@ -164,7 +164,7 @@ export default class Wizard extends React.Component {
               )}
             {/* </div> */}
             {/* <pre>{this.returnValues}</pre> */}
-            <pre style={{background: "white", zIndex: 200, height: 100, bottom: 160, position: "absolute"}}>{JSON.stringify(values, 0, 2)}</pre>
+            {/* <pre style={{background: "white", zIndex: 200, height: 100, bottom: 160, position: "absolute"}}>{JSON.stringify(values, 0, 2)}</pre> */}
           </form>
         )}
       </Form>
