@@ -80,7 +80,7 @@ export default function WizardModal() {
       ref.current.focus();
     }
   };
-  const onChangeBoxOptions = (e, props, ref, nextItemIsDiv) => {
+  const onChangeBoxOptions = (e, props, ref, nextItemIsDiv, selfRefToBlur) => {
     console.log(ref);
     console.log(props);
     if (props.input.onChange) {
@@ -88,7 +88,10 @@ export default function WizardModal() {
       props.input.onChange(e);
     }
     if(ref && nextItemIsDiv){
+      selfRefToBlur.blur();
       ref.current.scrollIntoView({ behavior: "smooth" });
+      //Blur the input in order to scroll into view correctly.
+      // selfRefToBlur.blur();
     }
     if (ref && !nextItemIsDiv) {
       ref.current.focus();
@@ -195,7 +198,7 @@ export default function WizardModal() {
                        <TurrendasInputField
                        ref={hwyMPG}
                        onChange={e => onChangeConst(e, props, null, true)}
-                       onKeyPress={e => onKeyPressConst(e, numOfSeats, true)}
+                       onKeyPress={e => onKeyPressConst(e, numOfSeats, true, hwyMPG)}
                        value={props.input.value}
                        caption="Highway MPG"
                      />
