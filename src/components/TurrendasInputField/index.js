@@ -73,7 +73,8 @@ const TurrendasInputField = React.forwardRef(({onChange, onKeyPress, value, capt
         height: 60,
         border: "1px solid #d9d9d9",
         borderRadius: 5,
-        background: 'white'
+        background: 'white',
+        maxWidth: 700
       },
       turrendasWrapperHighlighted: {
         border: "1px solid orange",
@@ -82,7 +83,7 @@ const TurrendasInputField = React.forwardRef(({onChange, onKeyPress, value, capt
       captionBox: {
         width: '23%',
         color: "#676767",
-        maxWidth: 140,
+        maxWidth: 150,
         borderRight: '1px solid #d9d9d9',
         textAlign: 'center',
         display: 'flex',

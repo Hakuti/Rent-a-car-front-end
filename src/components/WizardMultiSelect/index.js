@@ -5,7 +5,7 @@ import Select from "react-select";
 import { Field } from "react-final-form";
 import _ from "lodash";
 
-const ButtonComponent = props => {
+const ButtonComponent = React.forwardRef((props, ref) => {
     const styles = {
       box: {
         width: "25%",
@@ -16,7 +16,9 @@ const ButtonComponent = props => {
         margin: 5,
         border: "1px solid #d9d9d9",
         borderRadius: 5,
-        fontSize: 25
+        fontSize: 25,
+        height: 90,
+        maxWidth: 150
       },
       borderHighlight: {
         border: "solid 2px orange",
@@ -31,7 +33,8 @@ const ButtonComponent = props => {
       );
       console.log(selected);
       if (selected.highlight == true) {
-        props.onChange({ id: props.id, label: props.label }, props, null, null);
+        console.log(props);
+        props.onChange({ id: props.id, label: props.label }, props, ref, true);
       } else {
         props.onChange({}, props, null, null);
       }
@@ -54,11 +57,12 @@ const ButtonComponent = props => {
         {props.label}
       </div>
     );
-  };
+  });
 
-const WizardMultiSelect = props => {
-    console.log(props.input.value);
-    console.log(props);
+const WizardMultiSelect = React.forwardRef((props, ref) => {
+    // console.log(props.input.value);
+    // console.log(props);
+    console.log(ref);
     let secArr = [];
     let x = 1;
     if (x) {
@@ -66,9 +70,9 @@ const WizardMultiSelect = props => {
     }
     for (let item of props.options) {
       if (props.input.value.id == item.id) {
-        console.log("Here");
+        // console.log("Here");
         item.highlight = true;
-        console.log(item);
+        // console.log(item);
         secArr.push(item);
       }
       if (props.input.value.id !== item.id) {
@@ -76,8 +80,8 @@ const WizardMultiSelect = props => {
         secArr.push(item);
       }
     }
-    console.log(props.options);
-    console.log(secArr);
+    // console.log(props.options);
+    // console.log(secArr);
     // const [arr, setArr] = useState([{id: 1, label: 1, highlight: false}, {id: 2, label: 2, highlight: false}])
     const [arr, setArr] = useState(secArr);
     const callBack = (selected, index) => {
@@ -111,18 +115,21 @@ const WizardMultiSelect = props => {
         return newArr[index];
       }
     };
-    const items = arr.map((element, index) => (
+    const items = arr.map((element, index) => {
+      console.log(props);
+      return(
       <ButtonComponent
         id={element.id}
         index={index}
         label={element.label}
         highlight={element.highlight}
         selectCallBack={callBack}
+        ref={ref}
         {...props}
       ></ButtonComponent>
       // <p key={element.id} onClick={{}}>Hello from {element.label}!</p>
-    ));
+    )});
     return items;
-  };
+  });
 
   export default WizardMultiSelect;

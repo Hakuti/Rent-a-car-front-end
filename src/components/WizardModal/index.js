@@ -80,13 +80,17 @@ export default function WizardModal() {
       ref.current.focus();
     }
   };
-  const onChangeBoxOptions = (e, props, ref, isKeyPress) => {
+  const onChangeBoxOptions = (e, props, ref, nextItemIsDiv) => {
     console.log(ref);
     console.log(props);
     if (props.input.onChange) {
+      console.log("OK");
       props.input.onChange(e);
     }
-    if (ref && !isKeyPress) {
+    if(ref && nextItemIsDiv){
+      ref.current.scrollIntoView({ behavior: "smooth" });
+    }
+    if (ref && !nextItemIsDiv) {
       ref.current.focus();
     }
   };
@@ -191,7 +195,7 @@ export default function WizardModal() {
                        <TurrendasInputField
                        ref={hwyMPG}
                        onChange={e => onChangeConst(e, props, null, true)}
-                       onKeyPress={e => onKeyPressConst(e, numOfDoors, false)}
+                       onKeyPress={e => onKeyPressConst(e, numOfSeats, true)}
                        value={props.input.value}
                        caption="Highway MPG"
                      />
@@ -209,9 +213,11 @@ export default function WizardModal() {
                     {props => (
                       <div
                         ref={numOfSeats}
-                        style={{ display: "flex", background: "" }}
+                        style={{ display: "flex", justifyContent: "center" }}
                       >
                         <WizardMultiSelect
+                          //Ref to go here is for executing a certain action
+                          ref={numOfDoors}
                           options={numOfDoorOptions}
                           {...props}
                           onChange={onChangeBoxOptions}
@@ -228,12 +234,13 @@ export default function WizardModal() {
                   <Field name="numOfDoors" validate={boxRequired}>
                     {props => (
                       <div
-                        ref={numOfSeats}
-                        style={{ display: "flex", background: "" }}
+                        ref={numOfDoors}
+                        style={{ display: "flex", justifyContent: "center" }}
                       >
                         <WizardMultiSelect
                           options={numOfDoorOptions}
                           {...props}
+                          // ref={numOfDoors}
                           onChange={onChangeBoxOptions}
                         ></WizardMultiSelect>
                       </div>
