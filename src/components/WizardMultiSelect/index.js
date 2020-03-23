@@ -13,10 +13,14 @@ const ButtonComponent = props => {
         paddingBottom: 25,
         background: "white",
         textAlign: "center",
-        margin: 5
+        margin: 5,
+        border: "1px solid #d9d9d9",
+        borderRadius: 5,
+        fontSize: 25
       },
       borderHighlight: {
-        border: "solid 3px orange"
+        border: "solid 2px orange",
+        color: "orange"
       }
     };
     const [highlight, setHighlighted] = useState(props.highlight);

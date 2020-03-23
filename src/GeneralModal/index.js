@@ -28,7 +28,7 @@ export function Modal({ onClose, children, ...props}){
     
     return modalNode ? ReactDOM.createPortal(
         <Overlay style={{height: height, width: width, background: 'black'}}>
-            <Dialog {...props} style={{height: height, width: '100%', overflowY: 'scroll'}}>
+            <Dialog {...props} style={{height: height, width: '100%', overflowY: 'scroll', overflowX: 'hidden'}}>
             <div onClick={onClose} style={{right: -widthAsText , position: "relative", fontSize: 24, color: color, zIndex: 1}}><i class="fas fa-times"></i></div>
             {/* <button onClick={onClose}>Close</button> */}
 

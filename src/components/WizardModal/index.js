@@ -61,7 +61,9 @@ export default function WizardModal() {
   const numOfDoors = useRef(null);
   const numOfDoorOptions = [
     { id: 1, label: 1 },
-    { id: 2, label: 2 }
+    { id: 2, label: 2 },
+    {id: 3, label: 3},
+    {id: 4, label: 4}
   ];
   const scrollToRef = ref => {
     console.log(ref);
@@ -126,7 +128,7 @@ export default function WizardModal() {
               return errors;
             }}
           >
-            <div style={{ overflowY: "scroll", height: bodyHeight }}>
+            <div style={{ overflowY: "scroll", height: bodyHeight, marginBottom: 20 }}>
               <div>
                 <Field name="Make">
                   {props => (
@@ -200,8 +202,8 @@ export default function WizardModal() {
                 </div>
                 <Error name="hwyMPG" />
               </div>
-              {/* <div>
-                <label>number of seats</label>
+              <div style={{marginTop: 20}}>
+                <label>Number of seats</label>
                 <div>
                   <Field name="numOfSeats" validate={boxRequired}>
                     {props => (
@@ -219,7 +221,27 @@ export default function WizardModal() {
                   </Field>
                 </div>
                 <Error name="numOfSeats" />
-              </div>   */}
+              </div>  
+              <div style={{marginTop: 20}}>
+                <label>Number of doors</label>
+                <div>
+                  <Field name="numOfDoors" validate={boxRequired}>
+                    {props => (
+                      <div
+                        ref={numOfSeats}
+                        style={{ display: "flex", background: "" }}
+                      >
+                        <WizardMultiSelect
+                          options={numOfDoorOptions}
+                          {...props}
+                          onChange={onChangeBoxOptions}
+                        ></WizardMultiSelect>
+                      </div>
+                    )}
+                  </Field>
+                </div>
+                <Error name="numOfDoors" />
+              </div>  
             </div>
           </Wizard.Page>
           <Wizard.Page
