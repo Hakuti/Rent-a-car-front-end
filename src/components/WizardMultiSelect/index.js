@@ -34,7 +34,7 @@ const ButtonComponent = React.forwardRef((props, ref) => {
       console.log(selected);
       if (selected.highlight == true) {
         console.log(props);
-        props.onChange({ id: props.id, label: props.label }, props, ref, true);
+        props.onChange({ id: props.id, label: props.label }, props, ref, props.nextItemIsDiv);
       } else {
         props.onChange({}, props, null, null);
       }

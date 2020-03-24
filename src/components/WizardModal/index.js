@@ -50,9 +50,7 @@ export default function WizardModal() {
   const dispatch = useDispatch();
   const { height, width } = useWindowDimensions();
   const bodyHeight = height - 100 - 60;
-  const [showDropDown, setShowDropDown] = useState(false);
   const model = useRef(null);
-  // const [make, setMake] = useState({});
   const make = useRef(null);
   const hwyMPG = useRef(null);
   const cityMPG = useRef(null);
@@ -62,13 +60,12 @@ export default function WizardModal() {
   const numOfDoorOptions = [
     { id: 1, label: 1 },
     { id: 2, label: 2 },
-    {id: 3, label: 3},
-    {id: 4, label: 4}
+    { id: 3, label: 3 },
+    { id: 4, label: 4 }
   ];
-  const scrollToRef = ref => {
-    console.log(ref);
-    window.scrollTo(0, ref.current.offsetTop);
-  };
+
+  //This function changes the focus to the next input
+  //Checks if it is an input or a select
   const onChangeConst = (e, props, ref, isKeyPress) => {
     console.log(ref);
     console.log(props);
@@ -80,6 +77,7 @@ export default function WizardModal() {
       ref.current.focus();
     }
   };
+  //This function changes the focus to the next input/div/select
   const onChangeBoxOptions = (e, props, ref, nextItemIsDiv) => {
     console.log(ref);
     console.log(props);
@@ -87,7 +85,7 @@ export default function WizardModal() {
       console.log("OK");
       props.input.onChange(e);
     }
-    if(ref && nextItemIsDiv){
+    if (ref && nextItemIsDiv) {
       // selfRefToBlur.blur();
       ref.current.scrollIntoView({ behavior: "smooth" });
       //Blur the input in order to scroll into view correctly.
@@ -98,6 +96,7 @@ export default function WizardModal() {
     }
   };
 
+  //This function changes the focus to the next input/div/select
   const onKeyPressConst = (e, ref, nextItemIsDiv, selfRefToBlur) => {
     if (e.nativeEvent.keyCode === 13 && !nextItemIsDiv) {
       console.log("Yes");
@@ -136,11 +135,22 @@ export default function WizardModal() {
               return errors;
             }}
           >
-            <div style={{ overflowY: "scroll", height: bodyHeight, marginBottom: 20 }}>
+            <div
+              style={{
+                overflowY: "scroll",
+                height: bodyHeight,
+                marginBottom: 20
+              }}
+            >
+              {/* -------------------Make Dropdown-------------------- */}
               <div>
-                <Field name="Make">
-                  {props => (
-                    <div>
+                <div
+                  style={{
+                    ...styles.inputAlignment
+                  }}
+                >
+                  <Field name="Make">
+                    {props => (
                       <TurrendasSelect
                         onChange={e => onChangeConst(e, props, model)}
                         ref={make}
@@ -151,16 +161,21 @@ export default function WizardModal() {
                         options={Make}
                         last={false}
                       />
-                    </div>
-                  )}
-                </Field>
+                    )}
+                  </Field>
+                </div>
                 <Error name="Make" />
               </div>
+              {/* --------------------Model Dropdown---------------- */}
               <div>
-                <Field name="Model">
-                  {props => (
-                    <div>
-                       <TurrendasSelect
+                <div
+                  style={{
+                    ...styles.inputAlignment
+                  }}
+                >
+                  <Field name="Model">
+                    {props => (
+                      <TurrendasSelect
                         onChange={e => onChangeConst(e, props, cityMPG)}
                         ref={model}
                         caption="Model"
@@ -170,48 +185,58 @@ export default function WizardModal() {
                         options={Make}
                         last={false}
                       />
-                    </div>
-                  )}
-                </Field>
+                    )}
+                  </Field>
+                </div>
                 <Error name="Model" />
               </div>
+              {/* --------------City MPG Input -------------------- */}
               <div>
-                <Field name="cityMPG">
-                  {props => (
-                    <div>
+                <div
+                  style={{
+                    ...styles.inputAlignment
+                  }}
+                >
+                  <Field name="cityMPG">
+                    {props => (
                       <TurrendasInputField
-                      ref={cityMPG}
-                      onChange={e => onChangeConst(e, props, null, true)}
-                      onKeyPress={e => onKeyPressConst(e, hwyMPG, false)}
-                      value={props.input.value}
-                      caption="City MPG"
-                    />
-                    </div>
-                  )}
-                </Field>
+                        ref={cityMPG}
+                        onChange={e => onChangeConst(e, props, null, true)}
+                        onKeyPress={e => onKeyPressConst(e, hwyMPG, false)}
+                        value={props.input.value}
+                        caption="City MPG"
+                      />
+                    )}
+                  </Field>
+                </div>
                 <Error name="cityMPG" />
               </div>
+              {/* -------------Highway MPG Input--------------  */}
               <div>
-                <div>
+                <div
+                  style={{
+                    ...styles.inputAlignment
+                  }}
+                >
                   <Field name="hwyMPG" validate={required}>
                     {props => (
-                      
-                       <TurrendasInputField
-                       ref={hwyMPG}
-                       onChange={e => onChangeConst(e, props, null, true)}
-                       onKeyPress={e => onKeyPressConst(e, numOfSeats, true, hwyMPG)}
-                       value={props.input.value}
-                       caption="Highway MPG"
-                     />
-                      
+                      <TurrendasInputField
+                        ref={hwyMPG}
+                        onChange={e => onChangeConst(e, props, null, true)}
+                        onKeyPress={e =>
+                          onKeyPressConst(e, numOfSeats, true, hwyMPG)
+                        }
+                        value={props.input.value}
+                        caption="Highway MPG"
+                      />
                     )}
-                    
                   </Field>
                 </div>
                 <Error name="hwyMPG" />
               </div>
-              <div style={{marginTop: 20}}>
-                <label>Number of seats</label>
+              {/* --------Number of Seats Multiselect----------- */}
+              <div style={{ marginTop: 20 }}>
+                <label style={{...styles.labelFormat}}>Number of seats</label>
                 <div>
                   <Field name="numOfSeats" validate={boxRequired}>
                     {props => (
@@ -231,9 +256,16 @@ export default function WizardModal() {
                   </Field>
                 </div>
                 <Error name="numOfSeats" />
-              </div>  
-              <div style={{marginTop: 20}}>
-                <label>Number of doors</label>
+              </div>
+              {/* ------------Number of Doors Multi Select------------*/}
+              <div style={{ marginTop: 20 }}>
+                <label
+                  style={{
+                    ...styles.labelFormat
+                  }}
+                >
+                  Number of doors
+                </label>
                 <div>
                   <Field name="numOfDoors" validate={boxRequired}>
                     {props => (
@@ -244,6 +276,8 @@ export default function WizardModal() {
                         <WizardMultiSelect
                           options={numOfDoorOptions}
                           {...props}
+                          ref={gasGrade}
+                          nextItemIsDiv={false}
                           // ref={numOfDoors}
                           onChange={onChangeBoxOptions}
                         ></WizardMultiSelect>
@@ -252,9 +286,35 @@ export default function WizardModal() {
                   </Field>
                 </div>
                 <Error name="numOfDoors" />
-              </div>  
+              </div>
+              {/* ---------------------Gasgrade Dropdown ------------- */}
+              <div>
+                <div
+                  style={{
+                    ...styles.inputAlignment,
+                    marginBottom: 20
+                  }}
+                >
+                  <Field name="gasGrade">
+                    {props => (
+                      <TurrendasSelect
+                        onChange={e => onChangeConst(e, props, null)}
+                        ref={gasGrade}
+                        caption="Gas Grade"
+                        value={props.input.value}
+                        validate={searchBoxRequire}
+                        searchable
+                        options={Make}
+                        last={true}
+                      />
+                    )}
+                  </Field>
+                </div>
+                <Error name="gasGrade" />
+              </div>
             </div>
           </Wizard.Page>
+          {/* -----------PAGE 2------------------------------------- */}
           <Wizard.Page
             validate={values => {
               const errors = {};
@@ -341,5 +401,18 @@ const styles = {
   },
   customButtonSelected: {
     border: "solid black 3px"
+  },
+  inputAlignment: {
+    display: "flex",
+    width: "100%",
+    justifyContent: "center",
+    marginTop: 20
+  },
+  labelFormat: {
+    display: "flex",
+    background: "",
+    justifyContent: "center",
+    marginBottom: 10,
+    fontFamily: "Roboto-Medium"
   }
 };

@@ -78,21 +78,30 @@ const TurrendasSelect = React.forwardRef(({
   caption
 }, ref) => {
   const [isFocused, setFocused] = useState(false);
+  useEffect(() => {
+      if(isFocused && last){
+          console.log("In useEffect");
+         console.log(ref);
+        
+      }else if(!isFocused && last){
+          console.log("In useeffect not focused")
+        // window.scrollTo({
+        //     top: -100,
+        //     left: -100,
+        //     behavior: 'smooth'
+        //   });
+      }
+  }, [isFocused])
   let marginBottom = {marginBottom: 0}
   if(last){
       marginBottom = {marginBottom: 300}
   }
+
   return (
     <div
-      style={{
-        display: "flex",
-        width: "100%",
-        position: "relative",
-        marginTop: 20,
-        height: 60,
-        maxWidth: 700,
-        ...marginBottom
-      }}
+      style={ isFocused && last ? {
+        ...styles.wrapper,
+      }: {...styles.wrapper}}
     >
       <div style={{ display: "flex", width: "100%", position: "relative" }}>
         <div style={isFocused ? { ...styles.wording,...styles.borderWording, ...styles.borderWordingHighlighted,  } : {...styles.wording,...styles.borderWording}}>
@@ -103,6 +112,7 @@ const TurrendasSelect = React.forwardRef(({
             styles={isFocused ? customStyles : customStylesHighlighted}
             options={options}
             ref={ref}
+
             value={value}
             validate={validate}
             onChange={onChange}
@@ -149,7 +159,9 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    maxWidth: 150 
+    maxWidth: 150,
+    fontFamily: "Roboto-Medium",
+    fontSize: 15
   },
 
 
@@ -168,6 +180,13 @@ const styles = {
     borderLeft: "1px solid orange",
     borderTopLeftRadius: "6px",
     borderBottomLeftRadius: "6px",
+  },
+  wrapper: {
+    display: "flex",
+    width: "100%",
+    position: "relative",
+    height: 60,
+    maxWidth: 700,
   }
 };
 

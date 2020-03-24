@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function VehicleItem() {
   return (
     <>
-      <div style={{ ...styles.carWrapper }}>
+      <Link to="/host/your-car" style={{ ...styles.carWrapper, color: 'black' }}>
         <div
           style={{
             flex: 1,
@@ -50,7 +50,7 @@ export default function VehicleItem() {
             </div>
           </div>
         </div>
-      </div>
+      </Link>
     </>
   );
 }

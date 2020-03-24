@@ -42,8 +42,8 @@ const TurrendasInputField = React.forwardRef(({onChange, onKeyPress, value, capt
         
         style={
           isFocused
-            ? { ...styles.turrendasWrapper, ...styles.turrendasWrapperHighlighted, marginTop: 20 }
-            : { ...styles.turrendasWrapper, marginTop: 20 }
+            ? { ...styles.turrendasWrapper, ...styles.turrendasWrapperHighlighted}
+            : { ...styles.turrendasWrapper}
         }
       >
         <div
@@ -74,7 +74,8 @@ const TurrendasInputField = React.forwardRef(({onChange, onKeyPress, value, capt
         border: "1px solid #d9d9d9",
         borderRadius: 5,
         background: 'white',
-        maxWidth: 700
+        maxWidth: 700,
+        flex: 1,
       },
       turrendasWrapperHighlighted: {
         border: "1px solid orange",
@@ -83,11 +84,13 @@ const TurrendasInputField = React.forwardRef(({onChange, onKeyPress, value, capt
       captionBox: {
         width: '23%',
         color: "#676767",
+        fontSize: 15,
         maxWidth: 150,
         borderRight: '1px solid #d9d9d9',
         textAlign: 'center',
         display: 'flex',
-        alignItems: 'center'
+        alignItems: 'center',
+        fontFamily: 'Roboto-Medium'
       },
       captionBoxNested: {
         width: '100%'
