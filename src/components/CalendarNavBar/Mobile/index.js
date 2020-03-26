@@ -51,13 +51,13 @@ export default function MobileCalendarNavBar() {
 
 const styles = {
     searchbarWrapper:{
-        width: "75%",
+        width: "68%",
         height: "75%",
         background: "",
         display: "flex",
         flexDirection: "row",
         justifyContent: "flex-start",
-        marginLeft: 10
+        marginLeft: 40
     },
     searchbar: {
         height: "100%",
