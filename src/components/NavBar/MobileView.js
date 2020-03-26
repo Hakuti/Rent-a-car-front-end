@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "../../Logo/logo.png";
+import MobileCalendarNavBar from "../CalendarNavBar/Mobile";
+
 const DefaultContent = () => {
   const styles = {
     defaultNavBarSpacing: {
@@ -172,8 +174,8 @@ const MobileView = ({ history, styles }) => {
           path = path.substr(0, positionTemp);
         }
         switch (path) {
-          case "/game":
-            return <CalendarContent></CalendarContent>;
+          case "/search":
+            return <MobileCalendarNavBar></MobileCalendarNavBar>;
           case "/host":
             return <HostHeader history={history}></HostHeader>;
           default:

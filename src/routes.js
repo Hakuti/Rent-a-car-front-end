@@ -14,6 +14,7 @@ import { openWizardModal } from "./Redux/Actions/wizardModal";
 import AvailabilityModalContent from "./components/AvailabilityModal";
 import PriceModalContent from "./components/PriceModal";
 import WizardModal from "./components/WizardModal";
+import Search from "./components/Search";
 
 // import NoMatch from '../components/NoMatch'
 
@@ -94,9 +95,9 @@ const Routes = () => {
         )}
         <NavBar></NavBar>
         <Switch>
-          <Route exact path="/home" component={Game} />
+          {/* <Route exact path="/home" component={Game} /> */}
           {/* <Route path="/game" component={Game} /> */}
-          <Route path="/game" render={() => <div>Hi</div>}></Route>
+          <Route path="/search" component={Search}></Route>
           <Route path="/host" component={Host}></Route>
           {/* <Route exact path="/hosted-vehicles" component={HostVehicles}></Route> */}
           {/* <Route component={NoMatch} /> */}

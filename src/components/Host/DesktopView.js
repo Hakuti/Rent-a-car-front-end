@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { useWindowDimensions } from "../WindowDimensionsProvider";
 import {
   BrowserRouter as Router,
@@ -9,22 +9,25 @@ import {
   useRouteMatch,
   Redirect
 } from "react-router-dom";
+import Vehicles from "../HostVehicle";
 
-const TestDiv = (props) => {
+const TestDiv = props => {
   // console.log(props)
-  return(
-    <div style={{ position: "relative", top: 140, background: "yellow"}}>Hello</div>
-  )
-}
+  return (
+    <div style={{ position: "relative", top: 140, background: "yellow" }}>
+      Hello
+    </div>
+  );
+};
 const DesktopView = ({ history, styles }) => {
-  const {width, height} = useWindowDimensions();
+  const { width, height } = useWindowDimensions();
   const [isDesktop, setResize] = useState(false);
   let { path, url } = useRouteMatch();
   console.log(isDesktop);
 
-  if(width > 950){
-    if(isDesktop == false){
-      console.log("Is here")
+  if (width > 950) {
+    if (isDesktop == false) {
+      console.log("Is here");
       console.log(history);
       setResize(true);
       // return(<Redirect to='/host/poop'></Redirect>)
@@ -38,15 +41,19 @@ const DesktopView = ({ history, styles }) => {
   // console.log(url);
   return (
     <div>
-      {isDesktop ?<Redirect to='/host'></Redirect>: null}
+      {/* {isDesktop ?<Redirect to='/host'></Redirect>: null} */}
       <Switch>
         <Route path={`${path}/vehicles`}>
-          <TestDiv></TestDiv>
+          <div>
+            <Vehicles></Vehicles>
+          </div>
         </Route>
         <Route path={`${path}/poop`}>
-          <div style={{top: 140, position: "relative", background: "black"}}>Nothing</div>
+          <div style={{ top: 140, position: "relative", background: "black" }}>
+            Nothing
+          </div>
         </Route>
-
+        {isDesktop ? <Redirect to="/host"></Redirect> : null}
       </Switch>
     </div>
   );

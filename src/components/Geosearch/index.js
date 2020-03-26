@@ -18,14 +18,15 @@ const GeoElement = props => {
   const dispatch = useDispatch();
   return <Interactive as='div' hover={{color: 'green'}} onClick={() => dispatch(actions.setLocation(props))}>{props.Location.Address.Label}</Interactive>;
 };
+
 const GeoSearch = ({results}) => {
     console.log(results);
   return (
     <>
-      {results.map(item => {
+      {results.length > 0 ? results.map(item => {
         console.log(item);
         return <GeoElement key={item.Location.LocationId} {...item}></GeoElement>;
-      })}
+      }):<div>Nothing to show here</div>}
     </>
   );
 };

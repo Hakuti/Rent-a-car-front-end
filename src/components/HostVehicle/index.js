@@ -12,7 +12,13 @@ export default function Vehicles() {
   // console.log("Currently grabbing info");
   let tempCarData = [
     { make: "Honda", model: "Accord", img: "" },
-    { make: "Toyota", model: "Camry", img: "" }
+    { make: "Toyota", model: "Camry", img: "" },
+    { make: "Hyundai", model: "Camry", img: "" },
+    { make: "Kia", model: "Camry", img: "" },
+    { make: "Honda", model: "Accord", img: "" },
+    { make: "Toyota", model: "Camry", img: "" },
+    { make: "Hyundai", model: "Camry", img: "" },
+    { make: "Kia", model: "Camry", img: "" }
   ];
   //I need to make it so an API request only happens X value changes at the top
   //
