@@ -24,7 +24,7 @@ const FilterBar = ({ style }) => {
       paddingTop: 7,
       paddingBottom: 7,
       marginLeft: 7,
-      fontSize: 13.5
+      fontSize: 12
     },
     dateButton: {
         background: "#2E2E2E",
@@ -36,7 +36,7 @@ const FilterBar = ({ style }) => {
         paddingTop: 7,
         paddingBottom: 7,
         marginLeft: 7,
-        fontSize: 14
+        fontSize: 12
       }
   };
   console.log(style);
@@ -108,7 +108,7 @@ const styles = {
     background: "blue"
   },
   mapBox: {
-    width: "26%",
+    width: "30%",
     height: 45,
     background: "white",
     borderRadius: 30,
