@@ -24,7 +24,7 @@ const FilterBar = ({ style }) => {
       paddingTop: 7,
       paddingBottom: 7,
       marginLeft: 7,
-      fontSize: 12
+      fontSize: 13
     },
     dateButton: {
         background: "#2E2E2E",
@@ -36,7 +36,7 @@ const FilterBar = ({ style }) => {
         paddingTop: 7,
         paddingBottom: 7,
         marginLeft: 7,
-        fontSize: 12
+        fontSize: 13
       }
   };
   console.log(style);
