@@ -35,7 +35,7 @@ export default function MobileCalendarNavBar() {
         height: "100%"
       }}
     >
-      <div style={{ background: "", width: "25%" }}>
+      <div style={{ background: "", width: "27%" }}>
         <img src={logo} style={{ height: 50, marginLeft: 10 }}></img>
         
           <i class="fas fa-chevron-left" style={{transform: "rotate(-90deg)", position: "relative", bottom: 15, left: 10, color: "white"}}></i>
@@ -61,13 +61,13 @@ export default function MobileCalendarNavBar() {
 
 const styles = {
   searchbarWrapper: {
-    width: "68%",
+    width: "65%",
     height: "75%",
     background: "",
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-start",
-    marginLeft: 20
+    marginLeft: 25
   },
   searchbar: {
     height: "100%",
