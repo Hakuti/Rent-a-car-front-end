@@ -30,10 +30,10 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <img
             alt="avatar"
             src={image}
-            style={{ height: style.height * 0.75, width: "100%", borderRadius: 20, position: "relative" }}
+            style={{ height: style.height * 0.73, width: width * 0.95, borderRadius: 20, position: "relative" }}
           />
           <div style={{position: "relative", top: -(style.height/1.40), marginLeft: 15, display:"inline-block"}}>
-            <div style={{paddingLeft: 12.5, paddingRight: 12.5, paddingBottom: 6,paddingTop: 6, background: "white", borderRadius: 30, fontFamily: "Roboto-Regular", fontSize: 12}}>BOOK NOW</div>
+            <div style={{paddingLeft: 12.5, paddingRight: 12.5, paddingBottom: 6,paddingTop: 6, background: "white", borderRadius: 30, fontFamily: "Roboto-Regular", fontSize: 12, color: "#070707"}}>BOOK NOW</div>
           </div>
         </div>
       </div>
