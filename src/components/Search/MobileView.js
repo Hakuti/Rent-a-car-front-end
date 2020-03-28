@@ -20,21 +20,21 @@ export default function MobileView() {
   // console.log(`Filters: ${filters}`);
   // console.log(`Location: ${location}`);
   const { height, width } = useWindowDimensions();
-  useScrollPosition(
-    ({ prevPos, currPos }) => {
-      const isVisible = currPos.y > prevPos.y;
+  // useScrollPosition(
+  //   ({ prevPos, currPos }) => {
+  //     const isVisible = currPos.y > prevPos.y;
 
-      const shouldBeStyle = {
-        visibility: isVisible ? "visible" : "hidden",
-        transition: `opacity .5s ${isVisible ? "ease-in" : "ease-out"}`
-      };
+  //     const shouldBeStyle = {
+  //       visibility: isVisible ? "visible" : "hidden",
+  //       transition: `opacity .5s ${isVisible ? "ease-in" : "ease-out"}`
+  //     };
 
-      if (JSON.stringify(shouldBeStyle) === JSON.stringify(headerStyle)) return;
+  //     if (JSON.stringify(shouldBeStyle) === JSON.stringify(headerStyle)) return;
 
-      setHeaderStyle(shouldBeStyle);
-    },
-    [headerStyle]
-  );
+  //     setHeaderStyle(shouldBeStyle);
+  //   },
+  //   [headerStyle]
+  // );
   // useEffect(() => {
   //   effect
   //   return () => {

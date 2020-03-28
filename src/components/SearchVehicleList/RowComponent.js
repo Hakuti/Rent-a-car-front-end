@@ -22,7 +22,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           width: width * 0.95,
           height: style.height,
           margin: "0 auto",
-          background: "",
+          background: "red",
         }}
         className="avatar"
       >
