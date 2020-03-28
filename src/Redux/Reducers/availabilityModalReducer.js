@@ -11,11 +11,6 @@ const availabilityModalReducer = (state = initialState, action) => {
         ...state,
         openModal: action.payload
       };
-    // case "CLOSE_AVAILABILITY_MODAL":
-    //   return {
-    //     ...state,
-    //     closeModal: action.payload
-    //   };
     default:
       return state;
   }

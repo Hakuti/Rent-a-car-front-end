@@ -16,6 +16,7 @@ const TurrendasInput = styled.input`
   font-family: "Roboto-Medium";
   color: #4a4a4a;
   background: transparent;
+  text-overflow: ellipsis;
   ::-webkit-input-placeholder {
     transform: scale(0.75);
     transform-origin: 0% 60%;

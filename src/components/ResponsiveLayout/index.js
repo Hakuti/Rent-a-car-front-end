@@ -12,7 +12,7 @@ const ResponsiveLayout = ({ breakPoint = 414, renderMobile, renderDesktop, path 
     const dispatch = useDispatch();
     const [hasBeenResized, setResized] = useState(false);
     // console.log(path);
-    console.log(history);
+    // console.log(history);
     // console.log(renderMobile());
     // const test = () => {
     //     console.log("");
@@ -40,7 +40,7 @@ const ResponsiveLayout = ({ breakPoint = 414, renderMobile, renderDesktop, path 
     // console.log(oldWidth);
     //Here we are getting the current Dimensions again
     const { width } = useWindowDimensions()
-    console.log(`width of function: ${width}`);
+    // console.log(`width of function: ${width}`);
     // console.log("HERE");
     //let intiailzeWidth = width;
     //dispatch.currentWidth(width)
@@ -76,7 +76,7 @@ const ResponsiveLayout = ({ breakPoint = 414, renderMobile, renderDesktop, path 
                 setResized(false);
             }
         }
-        console.log(oldWidth);
+        // console.log(oldWidth);
         dispatch(setOldWidth(width));
     }
     // console.log(`CurrentWidth: ${currentWidth}`);

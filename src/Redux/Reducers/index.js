@@ -8,6 +8,11 @@ import currentWidth from './currentWidthReducer';
 import oldWidth from './oldWidthReducer';
 import priceModalReducer from './priceModalReducer';
 import wizardModalReducer from './wizardModalReducer';
+import searchCalendarReducer from './searchCalendarReducer';
+import searchFiltersReducer from './searchFiltersReducer';
+import searchLocationReducer from './searchLocationReducer';
+import searchTimesReducer from './searchTimesReducer';
+
 // import counterReducer from './counter'
 
 const rootReducer = (history) => combineReducers({
@@ -18,6 +23,10 @@ const rootReducer = (history) => combineReducers({
   vehicle: hostVehicleReducer,
   currentWidth: currentWidth,
   oldWidth: oldWidth,
+  searchCalendar: searchCalendarReducer,
+  searchFilters: searchFiltersReducer,
+  searchTimes: searchTimesReducer,
+  searchLocation: searchLocationReducer,
   router: connectRouter(history)
 })
 

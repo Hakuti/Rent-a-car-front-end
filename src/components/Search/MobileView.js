@@ -1,62 +1,25 @@
 import React, { useState } from "react";
 import { useWindowDimensions } from "../WindowDimensionsProvider";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
+import { useSelector, useDispatch } from "react-redux";
+import SearchFilterBar from "../SearchFilterBar";
+import SearchVehicleList from "../SearchVehicleList";
 
-const FilterBar = ({ style }) => {
-  const barStyles = {
-    filterBarWrapper: {
-      width: "100%",
-      // background: "blue",
-      height: 60,
-      top: "70px",
-      position: "fixed",
-      zIndex: 9,
-      background: "white",
-      borderBottom: "1px solid lightgray"
-    },
-    filterButton: {
-      background: "white",
-      color: "#2E2E2E",
-      border: "1.5px solid #2E2E2E",
-      borderRadius: 30,
-      paddingLeft: 13,
-      paddingRight: 13,
-      paddingTop: 7,
-      paddingBottom: 7,
-      marginLeft: 7,
-      fontSize: 13
-    },
-    dateButton: {
-        background: "#2E2E2E",
-        color: "white",
-        border: "1.5px solid #2E2E2E",
-        borderRadius: 30,
-        paddingLeft: 13,
-        paddingRight: 13,
-        paddingTop: 7,
-        paddingBottom: 7,
-        marginLeft: 7,
-        fontSize: 13
-      }
-  };
-  console.log(style);
-  return (
-    <div style={{ ...barStyles.filterBarWrapper, ...style }}>
-      <div style={{display: "flex", alignItems: "center", background: "", height: "100%", fontFamily: "Roboto-Regular"}}>
-        <div style={{ ...barStyles.filterButton }}>Filters - 1</div>
-        <div style={{...barStyles.dateButton}}>Mar. 3 - Apr. 10</div>
-        <div style={{...barStyles.dateButton}}>10:00AM - 12:00PM</div>
-      </div>
-    </div>
-  );
-};
 
 export default function MobileView() {
   const [headerStyle, setHeaderStyle] = useState({
     transition: "all 200ms ease-in"
   });
+  //Temporary variables:
+  const times = useSelector(state => state.searchTimes.searchTimes);
+  const filters = useSelector(state => state.searchFilters.searchFilters);
+  const location = useSelector(state => state.searchLocation.searchLocation);
+  const dates = useSelector(state => state.searchCalendar.searchCalendar);
+  // console.log(`Dates: ${dates}`);
+  // console.log(`Times: ${times}`);
+  // console.log(`Filters: ${filters}`);
+  // console.log(`Location: ${location}`);
   const { height, width } = useWindowDimensions();
-
   useScrollPosition(
     ({ prevPos, currPos }) => {
       const isVisible = currPos.y > prevPos.y;
@@ -72,14 +35,42 @@ export default function MobileView() {
     },
     [headerStyle]
   );
-
+  // useEffect(() => {
+  //   effect
+  //   return () => {
+  //     cleanup
+  //   }
+  // }, [input])
+ 
   return (
     <>
-      <FilterBar style={headerStyle}></FilterBar>
+      {/* <FilterBar style={headerStyle}></FilterBar> */}
+
+      <SearchFilterBar style={headerStyle}></SearchFilterBar>
       <div style={{ position: "absolute", top: 150 }}>
-        <div style={{ ...styles.boxToTestFixed, width: width }}></div>
+{/*         
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            fontFamily: "Roboto",
+            fontSize: 20,
+            background: "",
+            width: width,
+           
+          }}
+        >
+          <p>Times: {`${times}`}</p>
+          <p>Location: {`${location}`}</p>
+          <p>Filters: {`${filters}`}</p>
+          <p>Dates: {`${dates}`}</p>
+        </div> */}
+        <SearchVehicleList></SearchVehicleList>
+        {/* <div style={{ ...styles.boxToTestFixed, width: width }}></div>
         <div style={{ ...styles.boxToTestFixed, marginTop: 100, width }}></div>
-        <div style={{ ...styles.boxToTestFixed, width }}></div>
+        <div style={{ ...styles.boxToTestFixed, width }}></div> */}
         <div
           style={{
             position: "fixed",
@@ -117,6 +108,8 @@ const styles = {
     alignItems: "center",
     fontSize: 24,
     color: "#242424",
-    fontFamily: "Roboto-Medium"
+    fontFamily: "Roboto-Medium",
+    maxWidth: 150,
+    boxShadow: "2px 4px 5px -3px rgba(181,181,181,1)"
   }
 };
