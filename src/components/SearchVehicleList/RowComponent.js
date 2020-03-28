@@ -19,7 +19,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
     <div style={style} className="list-group-item">
       <div
         style={{
-          width: width * 0.9,
+          width: width * 0.95,
           height: style.height,
           margin: "0 auto",
           background: "",
@@ -30,9 +30,9 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <img
             alt="avatar"
             src={image}
-            style={{ height: style.height * 0.7, width: "100%", borderRadius: 20, position: "relative" }}
+            style={{ height: style.height * 0.75, width: "100%", borderRadius: 20, position: "relative" }}
           />
-          <div style={{position: "relative", top: -(style.height/1.45), marginLeft: 15, display:"inline-block"}}>
+          <div style={{position: "relative", top: -(style.height/1.40), marginLeft: 15, display:"inline-block"}}>
             <div style={{paddingLeft: 12.5, paddingRight: 12.5, paddingBottom: 6,paddingTop: 6, background: "white", borderRadius: 30, fontFamily: "Roboto-Regular", fontSize: 12}}>BOOK NOW</div>
           </div>
         </div>
