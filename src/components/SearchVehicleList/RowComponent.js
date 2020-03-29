@@ -9,6 +9,9 @@ const Loader = ({ style }) => (
 
 const Item = ({ image, num, style, loading, heightOfBlock }) => {
   const { width } = useWindowDimensions();
+  const heightOfImgWrapper =  style.height * 0.70
+  const heightOfTagWrapper = style.height * .15;
+  const heightOfDescWrapper = style.height * .15;
   return (
     <div style={style} className="list-group-item">
       <div
@@ -18,12 +21,12 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           ...styles.container
         }}
       >
-        <div style={{ background: "", height: style.height * 0.73 }}>
+        <div style={{ background: "", height: style.height * 0.70 }}>
           <img
             alt="avatar"
             src={image}
             style={{
-              height: style.height * 0.73,
+              height: style.height * 0.70,
               width: width * 0.95,
               borderRadius: 20,
               position: "relative"
@@ -50,9 +53,24 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           </div>
         </div>
         <div style={{ ...styles.tagWrapper }}>
-          <div style={{ ...styles.tagHost }}><div>GRAND HOST</div></div>
+          <div style={{display: "flex", height: "100%", background: "", width: "100%", alignItems: "flex-start"}}>
+          <div style={{ ...styles.tagHost }}>
+            <div>GRAND HOST</div>
+          </div>
           <div style={{ ...styles.tagTransmission }}>AUTOMATIC</div>
+          <div style={{ ...styles.tagRankWrapper }}>
+            <div style={{ ...styles.starWrapper }}>
+              {" "}
+              <i class="fas fa-star"></i><div style={{display: "inline", color: "#2E2E2E", fontSize: 18, marginLeft: 5}}>4.9</div>
+            </div>
+            <div style={{...styles.tripWrapper}}>108 trips</div>
 
+          </div>
+          </div>
+        </div>
+        <div style={{...styles.carDescWrap}}>
+          <div style={{fontSize: 24, background: "", position: "relative", top: -10}}>Corvette 2018</div>
+          <div style={{fontSize: 24, position: "relative", top: -15, background: ""}}>$299/dia</div>
         </div>
       </div>
     </div>
@@ -104,7 +122,8 @@ const styles = {
   tagWrapper: {
     background: "",
     display: "flex",
-    marginTop: 10
+    marginTop: 10,
+    
   },
   tagHost: {
     paddingTop: 7,
@@ -123,7 +142,9 @@ const styles = {
     fontFamily: "Roboto-Regular",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    maxHeight: 50,
+    height: "80%",
   },
   tagTransmission: {
     paddingTop: 8,
@@ -132,6 +153,7 @@ const styles = {
     paddingLeft: 4,
     background: "#2E2E2E",
     width: "30%",
+    maxHeight: 50,
     borderRadius: 5,
     border: "solid 1px #2E2E2E",
     textAlign: "center",
@@ -142,7 +164,37 @@ const styles = {
     fontFamily: "Roboto-Regular",
     display: "flex",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
+    height: "80%"
+  },
+  tagRankWrapper: {
+    display: "flex",
+    flexDirection: "column",
+    background: "",
+    flex: 1,
+    alignItems: "flex-end",
+    position: "relative",
+    top: 10
+  },
+  starWrapper: {
+    background: "",
+    display: "inline",
+    color: "orange",
+    fontSize: 20,
+    zIndex: 1,
+    marginRight: 35
+  },
+  tripWrapper: {
+    background: "",
+    display: "inline",
+    position: "relative",
+    top: -4,
+    marginRight: 35,
+
+  },
+  carDescWrap: {
+    background: "",
+    marginLeft: 25,
   }
 };
 export default RowComponent;
