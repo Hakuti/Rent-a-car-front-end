@@ -62,7 +62,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <div style={{ ...styles.tagRankWrapper }}>
             <div style={{ ...styles.starWrapper }}>
               {" "}
-              <i class="fas fa-star"></i><div style={{display: "inline", color: "#2E2E2E", fontSize: 18, marginLeft: 5}}>4.9</div>
+              <i class="fas fa-star"></i><div style={{display: "inline", color: "#2E2E2E", fontSize: 20, marginLeft: 5, background: ""}}>4.9</div>
             </div>
             <div style={{...styles.tripWrapper}}>108 trips</div>
 
@@ -70,8 +70,8 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           </div>
         </div>
         <div style={{...styles.carDescWrap}}>
-          <div style={{fontSize: 24, background: "", position: "relative", top: "-15px"}}>Corvette 2018</div>
-          <div style={{fontSize: 24, position: "relative", background: "", top: "-20px"}}>$299/dia</div>
+          <div style={{fontSize: 24, background: "", position: "relative", top: "-12px", fontFamily: "Roboto-Regular"}}>Corvette 2018</div>
+          <div style={{fontSize: 24, position: "relative", background: "", top: "-17px", fontFamily: "Roboto-Medium", color: "black"}}>$299/dia</div>
         </div>
       </div>
     </div>
@@ -174,24 +174,25 @@ const styles = {
     flexDirection: "column",
     background: "",
     flex: 1,
-    alignItems: "flex-end",
+    color: "#2E2E2E",
+    alignItems: "flex-start",
     position: "relative",
-    top: 10
+    // top: 10
   },
   starWrapper: {
     background: "",
     display: "inline",
     color: "orange",
-    fontSize: 20,
+    fontSize: 26,
     zIndex: 1,
-    marginRight: 35
+    marginLeft: 20
   },
   tripWrapper: {
     background: "",
     display: "inline",
     position: "relative",
-    top: -4,
-    marginRight: 35,
+    fontSize: "17px",
+    marginLeft: 22,
 
   },
   carDescWrap: {
