@@ -70,8 +70,8 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           </div>
         </div>
         <div style={{...styles.carDescWrap}}>
-          <div style={{fontSize: 24, background: "", position: "relative", top: "-15%"}}>Corvette 2018</div>
-          <div style={{fontSize: 24, position: "relative", background: ""}}>$299/dia</div>
+          <div style={{fontSize: 24, background: "", position: "relative", top: "-15px"}}>Corvette 2018</div>
+          <div style={{fontSize: 24, position: "relative", background: "", top: "-20px"}}>$299/dia</div>
         </div>
       </div>
     </div>
@@ -127,8 +127,8 @@ const styles = {
     
   },
   tagHost: {
-    paddingTop: 7,
-    paddingBottom: 7,
+    paddingTop: 8,
+    paddingBottom: 8,
     paddingRight: 4,
     paddingLeft: 4,
     background: "white",
@@ -161,6 +161,7 @@ const styles = {
     color: "white",
     fontSize: 14,
     marginLeft: 10,
+    maxHeight: 50,
     maxWidth: 180,
     fontFamily: "Roboto-Regular",
     display: "flex",
