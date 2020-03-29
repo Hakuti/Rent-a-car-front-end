@@ -32,7 +32,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <div
             style={{
               position: "relative",
-              top: -(style.height / 1.34),
+              top: -(style.height / 1.33),
               marginLeft: 15,
               display: "inline-block"
             }}
@@ -82,7 +82,7 @@ const styles = {
     // right: -(width * 0.6),
     // marginLeft: (width * 0.7),
     display: "inline-block",
-    fontSize: 40
+    fontSize: 38
   },
   bookNow: {
     paddingLeft: 13,
@@ -119,7 +119,7 @@ const styles = {
     color: "#3C3C3C",
     fontSize: 16,
     marginLeft: 25,
-    maxWidth: 180,
+    maxWidth: 250,
     fontFamily: "Roboto-Regular"
   },
   tagTransmission: {
