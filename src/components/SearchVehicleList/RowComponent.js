@@ -50,7 +50,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           </div>
         </div>
         <div style={{ ...styles.tagWrapper }}>
-          <div style={{ ...styles.tagHost }}>GRAND HOST</div>
+          <div style={{ ...styles.tagHost }}><div>GRAND HOST</div></div>
           <div style={{ ...styles.tagTransmission }}>AUTOMATIC</div>
 
         </div>
@@ -107,8 +107,8 @@ const styles = {
     marginTop: 10
   },
   tagHost: {
-    paddingTop: 8,
-    paddingBottom: 8,
+    paddingTop: 7,
+    paddingBottom: 7,
     paddingRight: 4,
     paddingLeft: 4,
     background: "white",
@@ -117,10 +117,13 @@ const styles = {
     border: "solid 1px #505050",
     textAlign: "center",
     color: "#3C3C3C",
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 25,
-    maxWidth: 250,
-    fontFamily: "Roboto-Regular"
+    maxWidth: 180,
+    fontFamily: "Roboto-Regular",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   },
   tagTransmission: {
     paddingTop: 8,
@@ -133,10 +136,13 @@ const styles = {
     border: "solid 1px #2E2E2E",
     textAlign: "center",
     color: "white",
-    fontSize: 16,
+    fontSize: 14,
     marginLeft: 10,
     maxWidth: 180,
-    fontFamily: "Roboto-Regular"
+    fontFamily: "Roboto-Regular",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center"
   }
 };
 export default RowComponent;
