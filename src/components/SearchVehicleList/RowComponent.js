@@ -21,12 +21,12 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           ...styles.container
         }}
       >
-        <div style={{ background: "", height: style.height * 0.70 }}>
+        <div style={{ background: "", height: style.height * 0.55 }}>
           <img
             alt="avatar"
             src={image}
             style={{
-              height: style.height * 0.70,
+              height: style.height * 0.55,
               width: width * 0.95,
               borderRadius: 20,
               position: "relative"
@@ -35,9 +35,10 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <div
             style={{
               position: "relative",
-              top: -(style.height / 1.33),
+              top: -(style.height / 1.77),
               marginLeft: 15,
-              display: "inline-block"
+              display: "inline-block",
+              background: ""
             }}
           >
             <div style={{ ...styles.bookNow }}>BOOK NOW</div>
@@ -45,7 +46,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <div
             style={{
               ...styles.heartWrapper,
-              top: -(style.height / 1.35),
+              top: -(style.height / 1.81),
               left: (width - 160) * 0.9
             }}
           >
@@ -69,7 +70,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           </div>
         </div>
         <div style={{...styles.carDescWrap}}>
-          <div style={{fontSize: 24, background: "", position: "relative", top: "3%"}}>Corvette 2018</div>
+          <div style={{fontSize: 24, background: "", position: "relative", top: ""}}>Corvette 2018</div>
           <div style={{fontSize: 24, position: "relative", background: ""}}>$299/dia</div>
         </div>
       </div>

@@ -30,7 +30,7 @@ const ListComponent = ({ items, moreItemsLoading, loadMore, hasNextPage, heightO
     // console.log(style);
     let objStyle = Object.assign({}, style);
     // console.log(objStyle)
-    objStyle.height = width/1.2
+    objStyle.height = width/1.0
     // console.log(objStyle)
     return(
     <RowComponent image={items[index]} num={index} style={objStyle} loading={index === items.length} heightOfBlock={heightOfBlock} />
@@ -49,7 +49,7 @@ const ListComponent = ({ items, moreItemsLoading, loadMore, hasNextPage, heightO
           height={height}
           width={"100%"}
           itemCount={itemCount}
-          itemSize={width/1.0}
+          itemSize={width/.9}
           // itemSize={heightOfBlock}
           className="list-container"
           onItemsRendered={onItemsRendered}
