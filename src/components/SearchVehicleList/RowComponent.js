@@ -70,7 +70,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           </div>
         </div>
         <div style={{...styles.carDescWrap}}>
-          <div style={{fontSize: 24, background: "", position: "relative", top: ""}}>Corvette 2018</div>
+          <div style={{fontSize: 24, background: "", position: "relative", top: "-15%"}}>Corvette 2018</div>
           <div style={{fontSize: 24, position: "relative", background: ""}}>$299/dia</div>
         </div>
       </div>
