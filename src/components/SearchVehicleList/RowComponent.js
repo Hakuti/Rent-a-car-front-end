@@ -1,6 +1,6 @@
 import React from "react";
 import { useWindowDimensions } from "../../components/WindowDimensionsProvider";
-
+import {ListContext} from "./ListComponent";
 const Loader = ({ style }) => (
   <div style={style} className="list-group-loader">
     <div className="loader"></div>
@@ -9,9 +9,9 @@ const Loader = ({ style }) => (
 
 const Item = ({ image, num, style, loading, heightOfBlock }) => {
   const { width } = useWindowDimensions();
-  const heightOfImgWrapper =  style.height * 0.70
-  const heightOfTagWrapper = style.height * .15;
-  const heightOfDescWrapper = style.height * .15;
+  const heightOfImgWrapper = style.height * 0.7;
+  const heightOfTagWrapper = style.height * 0.15;
+  const heightOfDescWrapper = style.height * 0.15;
   return (
     <div style={style} className="list-group-item">
       <div
@@ -21,12 +21,12 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           ...styles.container
         }}
       >
-        <div style={{ background: "", height: style.height * 0.55 }}>
+        <div style={{ background: "blue", height: style.height * 0.63 }}>
           <img
             alt="avatar"
             src={image}
             style={{
-              height: style.height * 0.55,
+              height: style.height * 0.63,
               width: width * 0.95,
               borderRadius: 20,
               position: "relative"
@@ -35,7 +35,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <div
             style={{
               position: "relative",
-              top: -(style.height / 1.77),
+              top: -(style.height / 1.65),
               marginLeft: 15,
               display: "inline-block",
               background: ""
@@ -46,7 +46,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           <div
             style={{
               ...styles.heartWrapper,
-              top: -(style.height / 1.81),
+              top: -(style.height / 1.65),
               left: (width - 160) * 0.9
             }}
           >
@@ -54,41 +54,104 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
           </div>
         </div>
         <div style={{ ...styles.tagWrapper }}>
-          <div style={{display: "flex", height: "100%", background: "", width: "100%", alignItems: "flex-start"}}>
-          <div style={{ ...styles.tagHost }}>
-            <div>GRAND HOST</div>
-          </div>
-          <div style={{ ...styles.tagTransmission }}>AUTOMATIC</div>
-          <div style={{ ...styles.tagRankWrapper }}>
-            <div style={{ ...styles.starWrapper }}>
-              {" "}
-              <i class="fas fa-star"></i><div style={{display: "inline", color: "#2E2E2E", fontSize: 20, marginLeft: 5, background: ""}}>4.9</div>
+          <div
+            style={{
+              display: "flex",
+              height: "100%",
+              background: "",
+              width: "100%",
+              alignItems: "flex-start"
+            }}
+          >
+            <div style={{ ...styles.tagHost }}>
+              <div>GRAND HOST</div>
             </div>
-            <div style={{...styles.tripWrapper}}>108 trips</div>
-
-          </div>
+            <div style={{ ...styles.tagTransmission }}>AUTOMATIC</div>
+            <div style={{ ...styles.tagRankWrapper }}>
+              <div style={{ ...styles.starWrapper }}>
+                {" "}
+                <i class="fas fa-star"></i>
+                <div
+                  style={{
+                    display: "inline",
+                    color: "#2E2E2E",
+                    fontSize: 20,
+                    marginLeft: 5,
+                    background: ""
+                  }}
+                >
+                  4.9
+                </div>
+              </div>
+              <div style={{ ...styles.tripWrapper }}>108 trips</div>
+            </div>
           </div>
         </div>
-        <div style={{...styles.carDescWrap}}>
-          <div style={{fontSize: 24, background: "", position: "relative", top: "-12px", fontFamily: "Roboto-Regular"}}>Corvette 2018</div>
-          <div style={{fontSize: 24, position: "relative", background: "", top: "-17px", fontFamily: "Roboto-Medium", color: "black"}}>$299/dia</div>
+        <div style={{ ...styles.carDescWrap }}>
+          <div
+            style={{
+              fontSize: 24,
+              background: "purple",
+              position: "relative",
+              top: "-12px",
+              fontFamily: "Roboto-Regular"
+            }}
+          >
+            Corvette 2018
+          </div>
+          <div
+            style={{
+              fontSize: 24,
+              position: "relative",
+              background: "orange",
+              top: "-17px",
+              fontFamily: "Roboto-Medium",
+              color: "black"
+            }}
+          >
+            $299/dia
+          </div>
         </div>
       </div>
     </div>
   );
 };
 
+const NewItem = ({ image, num, style, loading, heightOfBlock }) => {
+  // console.log(style);
+  const {setSize} = React.useContext(ListContext)
+  const { width } = useWindowDimensions();
+  const root = React.useRef();
+  let aspectRatio = 950 / 1400;
+  // console.log(num)
+  // console.log(root.current.getBoundingClientRect().height);
+  React.useEffect(() => {
+    // console.log(root.current.getBoundingClientRect().height);
+
+    setSize(num, root.current.getBoundingClientRect().height);
+  }, [width]);
+
+  // console.log(setSize);
+  return <div ref={root} style={{...style, height: 100}}>
+    Friend
+  </div>
+};
 const RowComponent = ({ image, num, style, loading, heightOfBlock }) => {
-  return loading ? (
-    <Loader style={style} />
-  ) : (
-    <Item
-      image={image}
-      num={num}
-      style={style}
-      loading={loading}
-      heightOfBlock={heightOfBlock}
-    />
+  // const {setSize} = React.useContext(ListContext)
+  // const { width } = useWindowDimensions();
+return(
+  // console.log(setSize);
+  // return loading ? (
+  //   <Loader style={style} />
+  // ) : (
+    <NewItem style={style} image={image} num={num}></NewItem>
+    // <Item
+    //   image={image}
+    //   num={num}
+    //   style={style}
+    //   loading={loading}
+    //   heightOfBlock={heightOfBlock}
+    // />
   );
 };
 
@@ -118,13 +181,13 @@ const styles = {
     margin: "0 auto",
     background: "",
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
+    background: "green"
   },
   tagWrapper: {
-    background: "",
+    background: "orange",
     display: "flex",
-    marginTop: 10,
-    
+    marginTop: 10
   },
   tagHost: {
     paddingTop: 8,
@@ -145,7 +208,7 @@ const styles = {
     justifyContent: "center",
     alignItems: "center",
     maxHeight: 50,
-    height: "80%",
+    height: "80%"
   },
   tagTransmission: {
     paddingTop: 8,
@@ -176,7 +239,7 @@ const styles = {
     flex: 1,
     color: "#2E2E2E",
     alignItems: "flex-start",
-    position: "relative",
+    position: "relative"
     // top: 10
   },
   starWrapper: {
@@ -192,12 +255,12 @@ const styles = {
     display: "inline",
     position: "relative",
     fontSize: "17px",
-    marginLeft: 22,
-
+    marginLeft: 22
   },
   carDescWrap: {
-    background: "",
+    background: "blue",
     marginLeft: 25,
+    display: "inline"
   }
 };
 export default RowComponent;

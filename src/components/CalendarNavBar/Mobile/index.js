@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import logo from "../../../Logo/logo.png";
 import styled, { css } from "styled-components";
+import { openLocationModal } from "../../../Redux/Actions/locationModal";
 
 /**
  * The goal of this navbar is to create a searchbar that leads to a modal
@@ -27,6 +28,7 @@ const TurrendasInput = styled.input`
   }
 `;
 export default function MobileCalendarNavBar() {
+  const dispatch = useDispatch();
   return (
     <div
       style={{
@@ -52,7 +54,7 @@ export default function MobileCalendarNavBar() {
               flex: 1
             }}
           >
-            <TurrendasInput placeholder="Select a location"></TurrendasInput>
+            <TurrendasInput onClick={() => dispatch(openLocationModal(true))} placeholder="Select a location"></TurrendasInput>
           </div>
         </div>
       </div>

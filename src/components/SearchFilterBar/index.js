@@ -5,6 +5,8 @@ import { searchCalendarDate } from "../../Redux/Actions/searchCalendarDate";
 import { searchFilters } from "../../Redux/Actions/searchFilters";
 import { searchLocation } from "../../Redux/Actions/searchLocation";
 import { searchTimes } from "../../Redux/Actions/searchTimes";
+import { searchTotal } from "../../Redux/Actions/searchlist"
+import { openLocationModal } from "../../Redux/Actions/locationModal";
 
 const DivWrapper = styled.div`
   display: flex;
@@ -21,6 +23,8 @@ const DivWrapper = styled.div`
 `;
 const SearchFilterBar = ({ style }) => {
   const dispatch = useDispatch();
+
+  // const total = useSelector((state) => state.searchTotal.searchTotal);
 
   //Temporary variables:
   const times = useSelector(
@@ -49,7 +53,8 @@ const SearchFilterBar = ({ style }) => {
           <div
             style={{ ...barStyles.filterButton }}
             onClick={() => {
-              dispatch(searchFilters(!filters));
+              dispatch(searchTotal(0));
+              dispatch(searchFilters(!filters)); 
             }}
           >
             Filters - 1

@@ -9,12 +9,13 @@ import { ModalProvider, Modal } from "./GeneralModal";
 import { openModal } from "./Redux/Actions/availabilityModal";
 import { openPriceModal } from "./Redux/Actions/priceModal";
 import { openWizardModal } from "./Redux/Actions/wizardModal";
-
+import { openLocationModal } from "./Redux/Actions/locationModal";
 
 import AvailabilityModalContent from "./components/AvailabilityModal";
 import PriceModalContent from "./components/PriceModal";
 import WizardModal from "./components/WizardModal";
 import Search from "./components/Search";
+import LocationModal from "./components/LocationModal";
 
 // import NoMatch from '../components/NoMatch'
 
@@ -24,8 +25,8 @@ const styles = {
     flex: 1,
     width: "100%",
     height: "60px",
-    background: "black"
-  }
+    background: "black",
+  },
 };
 
 // const NavBar = (props) => {
@@ -40,13 +41,16 @@ const styles = {
 
 const Routes = () => {
   const isAvailabilityModalOpen = useSelector(
-    state => state.availabilityModal.openModal
+    (state) => state.availabilityModal.openModal
   );
   const isPriceModalOpen = useSelector(
-    state => state.priceModal.openPriceModal
+    (state) => state.priceModal.openPriceModal
   );
   const isWizardModalOpen = useSelector(
-    state => state.wizardModal.openWizardModal
+    (state) => state.wizardModal.openWizardModal
+  );
+  const isLocationModalOpen = useSelector(
+    (state) => state.locationModal.openLocationModal
   );
   // console.log(isPriceModalOpen);
   // console.log(isPriceModalOpen);
@@ -56,13 +60,21 @@ const Routes = () => {
   return (
     <div>
       <ModalProvider>
+        {isLocationModalOpen && (
+          <Modal
+            onClose={() => dispatch(openLocationModal(false))}
+            style={{ width: 600, textAlign: "center", zIndex: 1000 }}
+          >
+            <LocationModal></LocationModal>
+          </Modal>
+        )}
         {isAvailabilityModalOpen && (
           <Modal
             onClose={() => dispatch(openModal(false))}
             style={{
               width: 600,
               textAlign: "center",
-              zIndex: 1000
+              zIndex: 1000,
             }}
           >
             <AvailabilityModalContent></AvailabilityModalContent>
@@ -74,7 +86,7 @@ const Routes = () => {
             style={{
               width: 600,
               textAlign: "center",
-              zIndex: 1001
+              zIndex: 1001,
             }}
           >
             <PriceModalContent></PriceModalContent>
@@ -86,7 +98,7 @@ const Routes = () => {
             style={{
               width: 600,
               textAlign: "center",
-              zIndex: 1001
+              zIndex: 1001,
             }}
             xButton={"white"}
           >

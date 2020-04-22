@@ -4,7 +4,7 @@ import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { useSelector, useDispatch } from "react-redux";
 import SearchFilterBar from "../SearchFilterBar";
 import SearchVehicleList from "../SearchVehicleList";
-
+import VirtuosoSearchList from "../VirtuosoSearchVehicleList/VirtuosoSearchVehicleList";
 
 export default function MobileView() {
   const [headerStyle, setHeaderStyle] = useState({
@@ -47,7 +47,9 @@ export default function MobileView() {
       {/* <FilterBar style={headerStyle}></FilterBar> */}
 
       <SearchFilterBar style={headerStyle}></SearchFilterBar>
-      <div style={{ position: "absolute", top: 150 }}>
+      <div style={{marginTop: 150 }}>
+        <VirtuosoSearchList></VirtuosoSearchList>
+
 {/*         
         <div
           style={{
@@ -67,7 +69,7 @@ export default function MobileView() {
           <p>Filters: {`${filters}`}</p>
           <p>Dates: {`${dates}`}</p>
         </div> */}
-        <SearchVehicleList></SearchVehicleList>
+        {/* <SearchVehicleList></SearchVehicleList> */}
         {/* <div style={{ ...styles.boxToTestFixed, width: width }}></div>
         <div style={{ ...styles.boxToTestFixed, marginTop: 100, width }}></div>
         <div style={{ ...styles.boxToTestFixed, width }}></div> */}

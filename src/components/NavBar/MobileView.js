@@ -4,7 +4,7 @@ import { useWindowDimensions } from "../WindowDimensionsProvider";
 import Geosearch from "../Geosearch";
 import GeoSearch from "../Geosearch";
 import { useDebounce, useDebouncedCallback } from "use-debounce";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
 import { Link } from "react-router-dom";
 import logo from "../../Logo/logo.png";
