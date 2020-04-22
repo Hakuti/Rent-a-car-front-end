@@ -6,7 +6,7 @@ export default function VirtuosoSearchRow({ index, item }) {
   // console.log(item);
   const [windowWidth, windowHeight] = useWindowSize();
   //Width of window i.e 900 divided by ratio 900/1.5 =
-  let width = windowWidth / 1.2;
+  let width = windowWidth / 1.1;
   let calcImageHeight = () => {
     // console.log(windowWidth);
     if (windowWidth > 700) {
@@ -160,7 +160,7 @@ export default function VirtuosoSearchRow({ index, item }) {
               display: "inline-block",
             }}
           >
-            GRAND HOST
+            MANUAL
           </div>
           <div
             style={{
