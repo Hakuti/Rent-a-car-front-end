@@ -6,13 +6,13 @@ export default function VirtuosoSearchRow({ index, item }) {
   // console.log(item);
   const [windowWidth, windowHeight] = useWindowSize();
   //Width of window i.e 900 divided by ratio 900/1.5 =
-  let width = windowWidth / 1.1;
+  let width = windowWidth * 0.95;
   let calcImageHeight = () => {
     // console.log(windowWidth);
     if (windowWidth > 700) {
       return "75%";
     }
-    return "70%";
+    return "67%";
   };
   let calcTop = () => {
     let heightOfDiv = width;
