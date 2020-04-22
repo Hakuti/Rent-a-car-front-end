@@ -12,7 +12,7 @@ export default function VirtuosoSearchRow({ index, item }) {
     if (windowWidth > 700) {
       return "75%";
     }
-    return "67%";
+    return "63%";
   };
   let calcTop = () => {
     let heightOfDiv = width;
