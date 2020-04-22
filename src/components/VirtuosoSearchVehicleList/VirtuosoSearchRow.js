@@ -1,11 +1,11 @@
 import React from "react";
 import { useWindowSize } from "../../Helpers/useWindowResize";
 
-export default function VirtuosoSearchRow({index, item}) {
-    // console.log(index);
-    // console.log(item);
+export default function VirtuosoSearchRow({ index, item }) {
+  // console.log(index);
+  // console.log(item);
   const [windowWidth, windowHeight] = useWindowSize();
-  //Width of window i.e 900 divided by ratio 900/1.5 = 
+  //Width of window i.e 900 divided by ratio 900/1.5 =
   let width = windowWidth / 1.2;
   let calcImageHeight = () => {
     // console.log(windowWidth);
@@ -15,8 +15,8 @@ export default function VirtuosoSearchRow({index, item}) {
     return "70%";
   };
   let calcTop = () => {
-    let heightOfDiv = width
-    let top = heightOfDiv - (heightOfDiv * .19);
+    let heightOfDiv = width;
+    let top = heightOfDiv - heightOfDiv * 0.19;
     return `-${top}px`;
     // if (windowWidth > 701 && windowWidth < 800) {
     //   return `-${width * 0.60}px`;
@@ -42,11 +42,11 @@ export default function VirtuosoSearchRow({index, item}) {
         marginBottom: 20,
         position: "relative",
         borderRadius: 10,
-        boxShadow: "-2px 6px 20px -3px rgba(43,43,43,0.5)"
+        boxShadow: "-2px 6px 20px -3px rgba(43,43,43,0.5)",
       }}
     >
       <div style={{ height: imageHeight, width: "100%", paddingTop: 10 }}>
-      <div
+        <div
           style={{
             position: "absolute",
             // left: `${width * 0.08}px`,
@@ -62,7 +62,7 @@ export default function VirtuosoSearchRow({index, item}) {
             height: "30px",
             borderRadius: 30,
             fontSize: 12,
-            fontFamily: "Roboto-Regular"
+            fontFamily: "Roboto-Regular",
           }}
         >
           BOOK NOW
@@ -79,13 +79,13 @@ export default function VirtuosoSearchRow({index, item}) {
             height: "30px",
             borderRadius: 30,
             fontSize: 30,
-            fontFamily: "Roboto-Regular"
+            fontFamily: "Roboto-Regular",
           }}
         >
           <i class="fas fa-heart" style={{}}></i>
         </div>
         <div
-          style={{ height: "100%", display: "flex", justifyContent: "center"}}
+          style={{ height: "100%", display: "flex", justifyContent: "center" }}
         >
           <img
             // src="https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&h=650&w=940 940w, https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260 1260w, https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940 1880w, https://images.pexels.com/photos/545063/pexels-photo-545063.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260 2520w"
@@ -106,15 +106,79 @@ export default function VirtuosoSearchRow({index, item}) {
             background: "rgba(204, 204, 204, 0.5)",
             display: "inline",
             fontSize: 10,
-            fontFamily: "Roboto-Regular"
+            fontFamily: "Roboto-Regular",
           }}
         >
           1km
         </div>
-        <div style={{display: "relative", marginLeft: "4%", marginTop: "5px", fontFamily: "Roboto-Medium", fontSize: "21px"}}>
+        <div
+          style={{
+            display: "relative",
+            marginLeft: "4%",
+            marginTop: "5px",
+            fontFamily: "Roboto-Medium",
+            fontSize: "21px",
+          }}
+        >
           Corvette Z01 -2018
         </div>
-        <div style={{marginLeft: "4%"}}><i class="fas fa-star" style={{color: "#FF9A34"}}></i><div style={{display: "inline", fontFamily: "Roboto-Regular", marginLeft: 3}}>4.9</div> <div style={{display: "inline"}}>(108 trips)</div></div>
+        <div style={{ marginLeft: "4%" }}>
+          <i class="fas fa-star" style={{ color: "#FF9A34" }}></i>
+          <div
+            style={{
+              display: "inline",
+              fontFamily: "Roboto-Regular",
+              marginLeft: 3,
+            }}
+          >
+            4.9
+          </div>{" "}
+          <div style={{ display: "inline" }}>(108 trips)</div>
+        </div>
+        <div style={{display: "flex", alignItems: "center"}}>
+          <div
+            style={{
+              marginLeft: "4%",
+              marginTop: "5px",
+              background: "white",
+              border: "solid 1.5px black",
+              paddingLeft: 15,
+              paddingRight: 15,
+              display: "inline-block",
+            }}
+          >
+            GRAND HOST
+          </div>
+          <div
+            style={{
+              marginLeft: "2%",
+              marginTop: "5px",
+              background: "white",
+              border: "solid 1.5px black",
+              paddingLeft: 15,
+              paddingRight: 15,
+              display: "inline-block",
+            }}
+          >
+            GRAND HOST
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flex: 1,
+              justifyContent: "flex-end",
+              marginRight: "5%",
+              marginTop: "5px",
+              background: "",
+              fontFamily: "Roboto-Medium",
+              fontSize: 16,
+              color: "black"
+            }}
+          >
+            {" "}
+            $299/day
+          </div>
+        </div>
         {/* <div
           style={{
             position: "relative",
@@ -129,7 +193,6 @@ export default function VirtuosoSearchRow({index, item}) {
           Book Now
         </div> */}
       </div>
-      
     </div>
   );
 }
@@ -140,6 +203,6 @@ const styles = {
     justifyContent: "flex-start",
   },
   font: {
-      fontFamily: "Roboto-Regular"
-  }
+    fontFamily: "Roboto-Regular",
+  },
 };
