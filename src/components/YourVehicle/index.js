@@ -17,7 +17,7 @@ export default function YourVehicle({vehicle, isLoading}) {
     <div>
       <Link to={"/host/vehicles"}>
         <div style={{ fontSize: 20, marginLeft: 10, color: "rgb(255, 69, 0)" }}>
-          <i class="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left"></i>
           <div style={{ display: "inline", marginLeft: 5 }}> All Cars</div>
         </div>
       </Link>

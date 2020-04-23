@@ -1,4 +1,3 @@
-import { createStore } from "redux";
 import {SET_SEARCH_TIMES} from "../../Constants/actiontypes";
 const initialState = {
   searchTimes: false

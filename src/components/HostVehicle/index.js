@@ -8,7 +8,7 @@ export default function Vehicles() {
   );
   const dispatch = useDispatch();
  
-  console.log(isWizardModalOpen);
+  // console.log(isWizardModalOpen);
   // console.log("Currently grabbing info");
   let tempCarData = [
     { make: "Honda", model: "Accord", img: "" },

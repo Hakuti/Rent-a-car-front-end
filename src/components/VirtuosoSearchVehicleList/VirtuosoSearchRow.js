@@ -91,7 +91,7 @@ export default function VirtuosoSearchRow({ index, item }) {
             fontFamily: "Roboto-Regular",
           }}
         >
-          <i class="fas fa-heart" style={{}}></i>
+          <i className="fas fa-heart" style={{}}></i>
         </div>
         <div
           style={{ height: "100%", display: "flex", justifyContent: "center" }}
@@ -132,7 +132,7 @@ export default function VirtuosoSearchRow({ index, item }) {
           Corvette Z01 -2018
         </div>
         <div style={{ marginLeft: "4%" }}>
-          <i class="fas fa-star" style={{ color: "#FF9A34" }}></i>
+          <i className="fas fa-star" style={{ color: "#FF9A34" }}></i>
           <div
             style={{
               display: "inline",

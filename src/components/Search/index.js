@@ -1,5 +1,5 @@
 import React from 'react';
-import ResponsiveLayout from '../ResponsiveLayout';
+import ResponsiveLayout from '../ResponsiveLayout/index';
 import DesktopView from "./DesktopView";
 import MobileView from "./MobileView";
 import { useSelector, useDispatch} from 'react-redux';

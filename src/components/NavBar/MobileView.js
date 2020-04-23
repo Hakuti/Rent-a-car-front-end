@@ -36,9 +36,9 @@ const DefaultContent = () => {
       <div style={{display: "flex", justifyContent: "flex-end", background: "", width: "50%", marginRight: 10, alignItems: "center"}}>
         <div style={{...styles.defaultNavBarSpacing, background: ""}}>Host</div>
         <div style={{...styles.defaultNavBarSpacing, background: ""}}>Messages</div>
-        <figure class="image is-48x48">
+        <figure className="image is-48x48">
             <img
-              class="is-rounded"
+              className="is-rounded"
               src="https://bulma.io/images/placeholders/128x128.png"
             />
           </figure>

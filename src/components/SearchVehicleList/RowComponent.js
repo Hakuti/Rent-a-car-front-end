@@ -50,7 +50,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
               left: (width - 160) * 0.9
             }}
           >
-            <i class="fas fa-heart"></i>
+            <i className="fas fa-heart"></i>
           </div>
         </div>
         <div style={{ ...styles.tagWrapper }}>
@@ -70,7 +70,7 @@ const Item = ({ image, num, style, loading, heightOfBlock }) => {
             <div style={{ ...styles.tagRankWrapper }}>
               <div style={{ ...styles.starWrapper }}>
                 {" "}
-                <i class="fas fa-star"></i>
+                <i className="fas fa-star"></i>
                 <div
                   style={{
                     display: "inline",

@@ -3,7 +3,6 @@ import { useWindowDimensions } from "../WindowDimensionsProvider";
 import { useScrollPosition } from "@n8tb1t/use-scroll-position";
 import { useSelector, useDispatch } from "react-redux";
 import SearchFilterBar from "../SearchFilterBar";
-import SearchVehicleList from "../SearchVehicleList";
 import VirtuosoSearchList from "../VirtuosoSearchVehicleList/VirtuosoSearchVehicleList";
 
 export default function MobileView() {
@@ -11,15 +10,10 @@ export default function MobileView() {
     transition: "all 200ms ease-in"
   });
   //Temporary variables:
-  const times = useSelector(state => state.searchTimes.searchTimes);
-  const filters = useSelector(state => state.searchFilters.searchFilters);
-  const location = useSelector(state => state.searchLocation.searchLocation);
-  const dates = useSelector(state => state.searchCalendar.searchCalendar);
   // console.log(`Dates: ${dates}`);
   // console.log(`Times: ${times}`);
   // console.log(`Filters: ${filters}`);
   // console.log(`Location: ${location}`);
-  const { height, width } = useWindowDimensions();
   // useScrollPosition(
   //   ({ prevPos, currPos }) => {
   //     const isVisible = currPos.y > prevPos.y;
@@ -84,7 +78,7 @@ export default function MobileView() {
           }}
         >
           <div style={{ ...styles.mapBox }}>
-            <i class="fas fa-map">{"  "}</i>
+            <i className="fas fa-map">{"  "}</i>
             <p style={{ marginLeft: 10, fontSize: 17 }}>Map</p>
           </div>
         </div>

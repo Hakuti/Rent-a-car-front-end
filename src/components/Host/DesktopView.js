@@ -23,19 +23,19 @@ const DesktopView = ({ history, styles }) => {
   const { width, height } = useWindowDimensions();
   const [isDesktop, setResize] = useState(false);
   let { path, url } = useRouteMatch();
-  console.log(isDesktop);
+  // console.log(isDesktop);
 
   if (width > 950) {
     if (isDesktop == false) {
-      console.log("Is here");
-      console.log(history);
+      // console.log("Is here");
+      // console.log(history);
       setResize(true);
       // return(<Redirect to='/host/poop'></Redirect>)
       //Will prevent from resizing infinitely
     }
   }
 
-  console.log(isDesktop);
+  // console.log(isDesktop);
   // let { path, url } = useRouteMatch();
   // console.log(path);
   // console.log(url);

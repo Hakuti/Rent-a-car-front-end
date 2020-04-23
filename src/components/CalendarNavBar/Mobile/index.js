@@ -8,7 +8,7 @@ import { openLocationModal } from "../../../Redux/Actions/locationModal";
  * The goal of this navbar is to create a searchbar that leads to a modal
  * The Logo if clicked is also a modal
  */
-const TurrendasInput = styled.input`
+export const TurrendasInput = styled.input`
   font-size: 22px;
   text-align: left;
   line-height: 48px;
@@ -41,7 +41,7 @@ export default function MobileCalendarNavBar() {
       <div style={{ background: "", width: "27%" }}>
         <img src={logo} style={{ height: 50, marginLeft: 10 }}></img>
         
-          <i class="fas fa-chevron-left" style={{transform: "rotate(-90deg)", position: "relative", bottom: 15, left: 10, color: "white"}}></i>
+          <i className="fas fa-chevron-left" style={{transform: "rotate(-90deg)", position: "relative", bottom: 15, left: 10, color: "white"}}></i>
         
       </div>
       <div style={{ ...styles.searchbarWrapper }}>

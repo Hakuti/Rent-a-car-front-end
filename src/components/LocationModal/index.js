@@ -80,7 +80,7 @@ export default function LocationModal() {
           }}
         >
           <i
-            class="fas fa-search"
+            className="fas fa-search"
             style={{ fontSize: 30, color: "rgb(255, 69, 0)" }}
           ></i>
           <TurrendasInput
@@ -99,21 +99,21 @@ export default function LocationModal() {
         <div style={{ ...styles.locationRecentResults }}>
           <div style={{ ...styles.locationItem }}>
             <i
-              class="fas fa-sign"
+              className="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
             <div style={{ fontSize: 20 }}>Current Location</div>
           </div>
           <div style={{ ...styles.locationItem }}>
             <i
-              class="fas fa-sign"
+              className="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
             <div style={{ fontSize: 20 }}>Current Location</div>
           </div>
           <div style={{ ...styles.locationItem }}>
             <i
-              class="fas fa-sign"
+              className="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
             <div style={{ fontSize: 20 }}>Current Location</div>
@@ -124,7 +124,7 @@ export default function LocationModal() {
         <div style={{ ...styles.locationRecentResults }}>
           <div style={{ ...styles.locationItem }}>
             <i
-              class="fas fa-sign"
+              className="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
             <div style={{ fontSize: 20 }}>Cali, Colombia</div>

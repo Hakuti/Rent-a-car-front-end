@@ -41,7 +41,7 @@ export default function Pricing() {
     <div>
       <Link to={"/host/your-car"}>
         <div style={{ fontSize: 20, marginLeft: 10, color: "rgb(255, 69, 0)" }}>
-          <i class="fas fa-chevron-left"></i>
+          <i className="fas fa-chevron-left"></i>
           <div style={{ display: "inline", marginLeft: 5 }}>Your Car</div>
         </div>
       </Link>

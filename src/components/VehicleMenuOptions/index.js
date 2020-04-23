@@ -17,7 +17,7 @@ export default function VehicleMenuItem({ title, path }) {
           {title}
         </div>
         <div style={{ ...styles.menuItemArrow }}>
-            <i class="fas fa-chevron-right" style={{color: "rgb(255, 69, 0)"}}></i>
+            <i className="fas fa-chevron-right" style={{color: "rgb(255, 69, 0)"}}></i>
         </div>
       {/* </div> */}
       </Link>

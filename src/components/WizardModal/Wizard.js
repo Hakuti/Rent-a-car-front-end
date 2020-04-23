@@ -138,7 +138,7 @@ export default class Wizard extends React.Component {
                   onClick={this.previous}
                 >
                   <div style={{display: "flex"}}>
-                    <i class="fas fa-chevron-left"></i>
+                    <i className="fas fa-chevron-left"></i>
                     <div
                       style={{ display: "inline", marginLeft: 5, fontSize: 16, fontFamily: 'Roboto-Italic', alignSelf: "center" }}
                     >
