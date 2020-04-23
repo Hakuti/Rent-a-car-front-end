@@ -6,13 +6,18 @@ export default function VirtuosoSearchRow({ index, item }) {
   // console.log(item);
   const [windowWidth, windowHeight] = useWindowSize();
   //Width of window i.e 900 divided by ratio 900/1.5 =
-  let width = windowWidth * 0.95;
+  let width = windowWidth * .95;
+  // let calcDivHeight = () => {
+  //   if(windowWidth < 340){
+  //     return windowWidth * 1.2
+  //   }
+  // }
   let calcImageHeight = () => {
     // console.log(windowWidth);
     if (windowWidth > 700) {
       return "75%";
     }
-    return "63%";
+    return "70%";
   };
   let calcTop = () => {
     let heightOfDiv = width;
@@ -34,6 +39,7 @@ export default function VirtuosoSearchRow({ index, item }) {
     <div
       style={{
         background: "white",
+        minHeight: 350,
         height: width,
         maxHeight: 533,
         maxWidth: 800,
