@@ -17,7 +17,7 @@ export default function VirtuosoSearchRow({ index, item }) {
     if (windowWidth > 700) {
       return "75%";
     }
-    return "70%";
+    return "65%";
   };
   let calcTop = () => {
     let heightOfDiv = width;
@@ -39,7 +39,7 @@ export default function VirtuosoSearchRow({ index, item }) {
     <div
       style={{
         background: "white",
-        minHeight: 350,
+        minHeight: 380,
         height: width,
         maxHeight: 533,
         maxWidth: 800,
