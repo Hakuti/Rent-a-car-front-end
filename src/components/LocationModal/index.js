@@ -71,7 +71,7 @@ export default function LocationModal() {
   }, 1000);
   return (
     <div>
-      <div style={{ marginTop: "30px" }}>
+      <div style={{ marginTop: "10px" }}>
         <div
           style={{
             marginBottom: "10px",
@@ -102,21 +102,21 @@ export default function LocationModal() {
               class="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
-            <div style={{ fontSize: 24 }}>Current Location</div>
+            <div style={{ fontSize: 20 }}>Current Location</div>
           </div>
           <div style={{ ...styles.locationItem }}>
             <i
               class="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
-            <div style={{ fontSize: 24 }}>Current Location</div>
+            <div style={{ fontSize: 20 }}>Current Location</div>
           </div>
           <div style={{ ...styles.locationItem }}>
             <i
               class="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
-            <div style={{ fontSize: 24 }}>Current Location</div>
+            <div style={{ fontSize: 20 }}>Current Location</div>
           </div>
         </div>
       )}
@@ -127,7 +127,7 @@ export default function LocationModal() {
               class="fas fa-sign"
               style={{ color: "rgb(255, 69, 0)", marginRight: 20 }}
             ></i>
-            <div style={{ fontSize: 24 }}>Cali, Colombia</div>
+            <div style={{ fontSize: 20 }}>Cali, Colombia</div>
           </div>
         </div>
       )}
@@ -158,7 +158,7 @@ const styles = {
     marginTop: 20,
   },
   locationItem: {
-    fontSize: 30,
+    fontSize: 25,
     fontFamily: "Roboto-Medium",
     display: "flex",
     marginLeft: 10,
