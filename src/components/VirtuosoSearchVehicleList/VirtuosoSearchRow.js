@@ -153,6 +153,9 @@ export default function VirtuosoSearchRow({ index, item }) {
               paddingRight: 15,
               display: "inline-block",
               borderRadius: 5,
+              fontSize: "13px",
+              fontFamily:"Roboto-Medium"
+
             }}
           >
             GRAND HOST
@@ -168,7 +171,9 @@ export default function VirtuosoSearchRow({ index, item }) {
               paddingRight: 25,
               display: "inline-block",
               color: "white",
-              borderRadius: 5
+              borderRadius: 5,
+              fontSize: 13,
+              fontFamily: "Roboto-Regular"
             }}
           >
             MANUAL
@@ -182,7 +187,7 @@ export default function VirtuosoSearchRow({ index, item }) {
               marginTop: "5px",
               background: "",
               fontFamily: "Roboto-Medium",
-              fontSize: 20,
+              fontSize: 18,
               color: "black"
             }}
           >
