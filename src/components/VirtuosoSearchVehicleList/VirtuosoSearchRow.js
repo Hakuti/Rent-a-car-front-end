@@ -42,7 +42,7 @@ export default function VirtuosoSearchRow({ index, item }) {
     <div
       style={{
         background: "white",
-        minHeight: 300,
+        minHeight: 320,
         height: width,
         maxHeight: 533,
         maxWidth: 800,
