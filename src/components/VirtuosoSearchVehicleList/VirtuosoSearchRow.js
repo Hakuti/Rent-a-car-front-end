@@ -6,7 +6,7 @@ export default function VirtuosoSearchRow({ index, item }) {
   // console.log(item);
   const [windowWidth, windowHeight] = useWindowSize();
   //Width of window i.e 900 divided by ratio 900/1.5 =
-  let width = windowWidth * .95;
+  let width = windowWidth / 1.2;
   // let calcDivHeight = () => {
   //   if(windowWidth < 340){
   //     return windowWidth * 1.2
@@ -141,16 +141,18 @@ export default function VirtuosoSearchRow({ index, item }) {
           </div>{" "}
           <div style={{ display: "inline" }}>(108 trips)</div>
         </div>
-        <div style={{display: "flex", alignItems: "center"}}>
+        <div style={{display: "flex", alignItems: "center", bottom: "5%", position: "absolute", background: "", width: "100%"}}>
           <div
             style={{
               marginLeft: "4%",
               marginTop: "5px",
               background: "white",
               border: "solid 1.5px black",
+              padding: 5,
               paddingLeft: 15,
               paddingRight: 15,
               display: "inline-block",
+              borderRadius: 5,
             }}
           >
             GRAND HOST
@@ -159,11 +161,14 @@ export default function VirtuosoSearchRow({ index, item }) {
             style={{
               marginLeft: "2%",
               marginTop: "5px",
-              background: "white",
+              background: "black",
               border: "solid 1.5px black",
-              paddingLeft: 15,
-              paddingRight: 15,
+              padding: 5,
+              paddingLeft: 25,
+              paddingRight: 25,
               display: "inline-block",
+              color: "white",
+              borderRadius: 5
             }}
           >
             MANUAL
@@ -177,7 +182,7 @@ export default function VirtuosoSearchRow({ index, item }) {
               marginTop: "5px",
               background: "",
               fontFamily: "Roboto-Medium",
-              fontSize: 16,
+              fontSize: 20,
               color: "black"
             }}
           >
