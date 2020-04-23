@@ -71,7 +71,7 @@ export default function LocationModal() {
   }, 1000);
   return (
     <div>
-      <div style={{ marginTop: "10px" }}>
+      <div style={{ marginTop: "5px" }}>
         <div
           style={{
             marginBottom: "10px",
@@ -151,11 +151,11 @@ const styles = {
   headerLocation: {
     fontFamily: "Roboto-Bold",
     fontSize: 20,
-    marginTop: 20,
+    marginTop: 10,
     marginLeft: 10,
   },
   locationRecentResults: {
-    marginTop: 20,
+    marginTop: 10,
   },
   locationItem: {
     fontSize: 25,
