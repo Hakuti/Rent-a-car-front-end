@@ -107,6 +107,22 @@ const DesktopCalendarNavBar = () => {
 
   return (
     <div style={{ ...navStyles.chooseDates }}>
+      {showDropDown ? (
+        <div
+          style={{
+            position: "absolute",
+            width: 500,
+            height: "250px",
+            left: "15%",
+            top: 70,
+            background: "white",
+            boxShadow:"0 5px 6px -6px #777",
+            zIndex: 5,
+          }}
+        >
+          <GeoSearch results={results}></GeoSearch>
+        </div>
+      ) : null}
       <div style={{ ...navStyles.logoDisplay }}>
         {/* <div style={{ background: "", width: "27%" }}> */}
         <div style={{ width: "80px" }}>
@@ -126,7 +142,7 @@ const DesktopCalendarNavBar = () => {
       >
         <div style={{...navStyles.searchbarWrapper}}>
         <div style={{...navStyles.searchbar}}>
-          <TurrendasInput placeholder="Enter a location"></TurrendasInput>
+          <TurrendasInput placeholder="Enter a location" onClick={()=> setShowDropDown(true)} ref={container}></TurrendasInput>
         </div>
         </div>
         {/* <InputBox
@@ -205,20 +221,7 @@ const DesktopCalendarNavBar = () => {
           </figure>
         </div>
       </div>
-      {showDropDown ? (
-        <div
-          style={{
-            position: "absolute",
-            width: 500,
-            left: "20%",
-            bottom: -140,
-            background: "orange",
-            zIndex: 5,
-          }}
-        >
-          <GeoSearch results={results}></GeoSearch>
-        </div>
-      ) : null}
+      
     </div>
   );
 };

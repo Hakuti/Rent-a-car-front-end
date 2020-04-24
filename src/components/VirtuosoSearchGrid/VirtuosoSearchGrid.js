@@ -18,10 +18,14 @@ const ListContainer = styled.div`
     padding: 2rem;
     box-shadow: 0 5px 6px -6px #777;
     background: white;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
   }
 `
   const ItemContainer = styled.div`
-    padding: 0.5rem;
+    // padding: 0.5rem;
+    height: 300px;
     width: 25%;
     background: #f5f5f5;
     display: flex;
@@ -30,6 +34,7 @@ const ListContainer = styled.div`
 
     @media (max-width: 1024px) {
       width: 33%;
+
     }
 
     @media (max-width: 768px) {
