@@ -7,8 +7,10 @@ import { useSelector } from "react-redux";
 import styled, { css } from "styled-components";
 // import { TurrendasInput } from "../../CalendarNavBar/Mobile/index";
 import _ from "lodash";
+import ProfileNavMenuItems from "./MenuItems";
 
 const container = React.createRef();
+const profileMenu = React.createRef();
 export const TurrendasInput = styled.input`
   font-size: 22px;
   text-align: left;
@@ -50,13 +52,17 @@ const DesktopCalendarNavBar = () => {
   const [results, setResults] = useState([]);
   const [showDropDown, setShowDropDown] = useState(false);
   const location = useSelector((store) => store.location);
-
+  const [showProfileMenu, setShowProfileMenu] = useState(false);
   const handleClickOutside = (event) => {
     console.log("Here");
     // console.log(container.current);
     if (container.current && !container.current.contains(event.target)) {
       console.log("Where");
       setShowDropDown(false);
+    }
+    if (profileMenu.current && !profileMenu.current.contains(event.target)) {
+      console.log("Where");
+      setShowProfileMenu(false);
     }
   };
 
@@ -116,13 +122,28 @@ const DesktopCalendarNavBar = () => {
             left: "15%",
             top: 70,
             background: "white",
-            boxShadow:"0 5px 6px -6px #777",
+            boxShadow: "0 5px 6px -6px #777",
             zIndex: 5,
           }}
         >
           <GeoSearch results={results}></GeoSearch>
         </div>
       ) : null}
+      {showProfileMenu && (
+        <div
+          style={{
+            height: "250px",
+            width: "200px",
+            background: "white",
+            position: "absolute",
+            top: 70,
+            right: 20,
+            boxShadow: "0 5px 6px -6px #777",
+          }}
+        >
+          <ProfileNavMenuItems></ProfileNavMenuItems>
+        </div>
+      )}
       <div style={{ ...navStyles.logoDisplay }}>
         {/* <div style={{ background: "", width: "27%" }}> */}
         <div style={{ width: "80px" }}>
@@ -140,10 +161,14 @@ const DesktopCalendarNavBar = () => {
           marginRight: "5%",
         }}
       >
-        <div style={{...navStyles.searchbarWrapper}}>
-        <div style={{...navStyles.searchbar}}>
-          <TurrendasInput placeholder="Enter a location" onClick={()=> setShowDropDown(true)} ref={container}></TurrendasInput>
-        </div>
+        <div style={{ ...navStyles.searchbarWrapper }}>
+          <div style={{ ...navStyles.searchbar }}>
+            <TurrendasInput
+              placeholder="Enter a location"
+              onClick={() => setShowDropDown(true)}
+              ref={container}
+            ></TurrendasInput>
+          </div>
         </div>
         {/* <InputBox
           type="text"
@@ -213,7 +238,11 @@ const DesktopCalendarNavBar = () => {
             justifyContent: "center",
           }}
         >
-          <figure className="image is-48x48">
+          <figure
+            className="image is-48x48"
+            onClick={() => setShowProfileMenu(true)}
+            ref={profileMenu}
+          >
             <img
               className="is-rounded"
               src="https://bulma.io/images/placeholders/128x128.png"
@@ -221,7 +250,6 @@ const DesktopCalendarNavBar = () => {
           </figure>
         </div>
       </div>
-      
     </div>
   );
 };
