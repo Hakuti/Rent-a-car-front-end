@@ -8,9 +8,11 @@ import styled, { css } from "styled-components";
 // import { TurrendasInput } from "../../CalendarNavBar/Mobile/index";
 import _ from "lodash";
 import ProfileNavMenuItems from "./MenuItems";
+import SearchRangeCalendar from "../../SearchRangeCalendar";
 
 const container = React.createRef();
 const profileMenu = React.createRef();
+const calendarMenu = React.createRef();
 export const TurrendasInput = styled.input`
   font-size: 22px;
   text-align: left;
@@ -53,6 +55,7 @@ const DesktopCalendarNavBar = () => {
   const [showDropDown, setShowDropDown] = useState(false);
   const location = useSelector((store) => store.location);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
+  const [showCalendarMenu, setShowCalendarMenu] = useState(false);
   const handleClickOutside = (event) => {
     console.log("Here");
     // console.log(container.current);
@@ -63,6 +66,9 @@ const DesktopCalendarNavBar = () => {
     if (profileMenu.current && !profileMenu.current.contains(event.target)) {
       console.log("Where");
       setShowProfileMenu(false);
+    }
+    if (calendarMenu.current && !calendarMenu.current.contains(event.target)) {
+      setShowCalendarMenu(false);
     }
   };
 
@@ -132,7 +138,7 @@ const DesktopCalendarNavBar = () => {
       {showProfileMenu && (
         <div
           style={{
-            height: "250px",
+            height: "280px",
             width: "200px",
             background: "white",
             position: "absolute",
@@ -140,10 +146,18 @@ const DesktopCalendarNavBar = () => {
             right: 20,
             boxShadow: "0 5px 6px -6px #777",
           }}
+          onMouseLeave={() => setShowProfileMenu(false)}
         >
           <ProfileNavMenuItems></ProfileNavMenuItems>
         </div>
       )}
+      {showCalendarMenu && (<div ref={calendarMenu} style={{
+        position: "absolute",
+        top: "70px",
+        right: 300
+      }}>
+        <SearchRangeCalendar></SearchRangeCalendar>
+      </div>)}
       <div style={{ ...navStyles.logoDisplay }}>
         {/* <div style={{ background: "", width: "27%" }}> */}
         <div style={{ width: "80px" }}>
@@ -197,7 +211,10 @@ const DesktopCalendarNavBar = () => {
       >
         <div style={{ ...navStyles.dateAndTimeContainer }}>
           <div style={{ ...navStyles.dateAndTime, ...navStyles.datesFont }}>
-            <div style={{ ...navStyles.startDate }}>
+            <div
+              style={{ ...navStyles.startDate }}
+              onClick={() => setShowCalendarMenu(!showCalendarMenu)}
+            >
               3/7/3{" "}
               <span className="icon">
                 <i className="fas fa-chevron-down"></i>
@@ -241,6 +258,7 @@ const DesktopCalendarNavBar = () => {
           <figure
             className="image is-48x48"
             onClick={() => setShowProfileMenu(true)}
+            onMouseEnter={() => setShowProfileMenu(true)}
             ref={profileMenu}
           >
             <img

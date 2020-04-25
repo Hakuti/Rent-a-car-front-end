@@ -44,6 +44,7 @@ export default function AvailabilityCalendar() {
     );
   };
   const onDateChange = date => {
+    console.log(date);
     setDate(date);
   };
   const onFocusChange = () => {

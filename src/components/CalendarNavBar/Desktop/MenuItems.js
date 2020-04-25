@@ -2,7 +2,7 @@ import React from "react";
 import Interactive from "react-interactive";
 
 export default function ProfileNavMenuItems() {
-  const MenuItems = ["Messages", "Notifications", "Settings"];
+  const MenuItems = ["Host", "Messages", "Notifications", "Settings"];
 
   return (
     <div style={{}}>
