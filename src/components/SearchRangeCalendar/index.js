@@ -10,10 +10,16 @@ import {searchCalendarStartDate, searchCalendarEndDate } from "../../Redux/Actio
 // import {openModal} from "../../Redux/Actions/availabilityModal";
 
 export default function SearchRangeCalendar() {
-  const SelectedStartDate = moment();
-  const SelectedEndDate = moment().add(5, 'days');
-  const [startDate, setStartDate] = useState(SelectedStartDate);
-  const [endDate, setEndDate] = useState(SelectedEndDate);
+  const startReduxDate = useSelector(
+    (state) => state.searchCalendar.searchCalendarStartDate
+  );
+  const endReduxDate = useSelector(
+    (state) => state.searchCalendar.searchCalendarEndDate
+  );
+  // const SelectedStartDate = moment();
+  // const SelectedEndDate = moment().add(5, 'days');
+  const [startDate, setStartDate] = useState(startReduxDate);
+  const [endDate, setEndDate] = useState(endReduxDate);
   const reduxFocus = useSelector(
     (state) => state.searchCalendar.searchCalendarStartFocus
   );
@@ -58,7 +64,7 @@ export default function SearchRangeCalendar() {
       console.log(focusedInput)
     //Forced the focus states to always be truthy so date is always selectable
     // setFocused(true);
-    setFocusInput(focusedInput)
+    setFocusInput(focusedInput || "startDate")
   };
 
   const focusedInputX = (focusedInput) => {
@@ -100,7 +106,7 @@ export default function SearchRangeCalendar() {
           onFocusChange={focusedInput => {
             console.log("react-dates, !!!!");
             console.log(focusedInput);
-            setFocused(focusedInput || "startDate");
+            setFocused(focusedInput);
             // this.setState({ focusedInput: focusedInput || "startDate" });
           }}
           onBlur={() => console.log("esc")}
