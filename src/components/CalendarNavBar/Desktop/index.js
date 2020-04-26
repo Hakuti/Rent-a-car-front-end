@@ -3,12 +3,13 @@ import logo from "../../../Logo/logo.png";
 import { useWindowDimensions } from "../../WindowDimensionsProvider";
 import GeoSearch from "../../Geosearch";
 import { useDebounce, useDebouncedCallback } from "use-debounce";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
 // import { TurrendasInput } from "../../CalendarNavBar/Mobile/index";
 import _ from "lodash";
 import ProfileNavMenuItems from "./MenuItems";
 import SearchRangeCalendar from "../../SearchRangeCalendar";
+import { searchCalendarStartFocus } from "../../../Redux/Actions/searchCalendarDate";
 
 const container = React.createRef();
 const profileMenu = React.createRef();
@@ -56,15 +57,24 @@ const DesktopCalendarNavBar = () => {
   const location = useSelector((store) => store.location);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showCalendarMenu, setShowCalendarMenu] = useState(false);
+  const dispatch = useDispatch();
+
+  const startDate = useSelector(
+    (state) => state.searchCalendar.searchCalendarStartDate
+  );
+  const endDate = useSelector(
+    (state) => state.searchCalendar.searchCalendarEndDate
+  );
+  // console.log(startDate);
   const handleClickOutside = (event) => {
-    console.log("Here");
+    // console.log("Here");
     // console.log(container.current);
     if (container.current && !container.current.contains(event.target)) {
-      console.log("Where");
+      // console.log("Where");
       setShowDropDown(false);
     }
     if (profileMenu.current && !profileMenu.current.contains(event.target)) {
-      console.log("Where");
+      // console.log("Where");
       setShowProfileMenu(false);
     }
     if (calendarMenu.current && !calendarMenu.current.contains(event.target)) {
@@ -151,13 +161,18 @@ const DesktopCalendarNavBar = () => {
           <ProfileNavMenuItems></ProfileNavMenuItems>
         </div>
       )}
-      {showCalendarMenu && (<div ref={calendarMenu} style={{
-        position: "absolute",
-        top: "70px",
-        right: 300
-      }}>
-        <SearchRangeCalendar></SearchRangeCalendar>
-      </div>)}
+      {showCalendarMenu && (
+        <div
+          ref={calendarMenu}
+          style={{
+            position: "absolute",
+            top: "70px",
+            right: 300,
+          }}
+        >
+          <SearchRangeCalendar></SearchRangeCalendar>
+        </div>
+      )}
       <div style={{ ...navStyles.logoDisplay }}>
         {/* <div style={{ background: "", width: "27%" }}> */}
         <div style={{ width: "80px" }}>
@@ -213,9 +228,13 @@ const DesktopCalendarNavBar = () => {
           <div style={{ ...navStyles.dateAndTime, ...navStyles.datesFont }}>
             <div
               style={{ ...navStyles.startDate }}
-              onClick={() => setShowCalendarMenu(!showCalendarMenu)}
+              onClick={() => {
+                setShowCalendarMenu(true);
+                dispatch(searchCalendarStartFocus("startDate"));
+              }}
             >
-              3/7/3{" "}
+              {startDate.format("MM/DD/YY")}
+              {/* 3/7/3{" "} */}
               <span className="icon">
                 <i className="fas fa-chevron-down"></i>
               </span>
@@ -229,8 +248,14 @@ const DesktopCalendarNavBar = () => {
             <div style={{ ...navStyles.middleBreakerContainer }}>
               <div style={{ ...navStyles.middleBreaker }}></div>
             </div>
-            <div style={{ ...navStyles.endDate }}>
-              3/7/3{" "}
+            <div
+              style={{ ...navStyles.endDate }}
+              onClick={() => {
+                setShowCalendarMenu(true);
+                dispatch(searchCalendarStartFocus("endDate"));
+              }}
+            >
+              {endDate.format("MM/DD/YY")} {/* 3/10/3{" "} */}
               <span className="icon">
                 <i className="fas fa-chevron-down"></i>
               </span>
@@ -345,6 +370,7 @@ const navStyles = {
   startDate: {
     position: "relative",
     flex: 2,
+    cursor: "pointer",
     // background: "blue",
     textAlign: "right",
   },
@@ -359,7 +385,8 @@ const navStyles = {
     position: "relative",
     display: "flex",
     alignItems: "center",
-    justifyContent: "flex-end",
+    marginLeft: 5,
+    justifyContent: "center",
     // background: "yellow",
     height: "60%",
   },
@@ -374,6 +401,7 @@ const navStyles = {
     position: "relative",
     // background: "red",
     textAlign: "center",
+    cursor: "pointer",
   },
   endTime: {
     flex: 2,

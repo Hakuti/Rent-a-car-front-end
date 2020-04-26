@@ -6,6 +6,7 @@ import {
 import moment from "moment";
 // import { ModalProvider, Modal } from "../../GeneralModal";
 import { useSelector, useDispatch } from "react-redux";
+import {searchCalendarStartDate, searchCalendarEndDate } from "../../Redux/Actions/searchCalendarDate";
 // import {openModal} from "../../Redux/Actions/availabilityModal";
 
 export default function SearchRangeCalendar() {
@@ -13,8 +14,11 @@ export default function SearchRangeCalendar() {
   const SelectedEndDate = moment().add(5, 'days');
   const [startDate, setStartDate] = useState(SelectedStartDate);
   const [endDate, setEndDate] = useState(SelectedEndDate);
-  const [focusedInput, setFocusInput] = useState(null);
-  const [focused, setFocused] = useState("startDate");
+  const reduxFocus = useSelector(
+    (state) => state.searchCalendar.searchCalendarStartFocus
+  );
+  const [focusedInput, setFocusInput] = useState(reduxFocus);
+  const [focused, setFocused] = useState(reduxFocus);
   const [date, setDate] = useState(moment());
   const dispatch = useDispatch();
 
@@ -81,10 +85,21 @@ export default function SearchRangeCalendar() {
         //   ref={this.ref}
           startDate={startDate}
           endDate={endDate}
-          onDatesChange={({ startDate, endDate }) => {setStartDate(startDate); setEndDate(endDate)}}
+          onDatesChange={({ startDate, endDate }) => {
+            // console.log(startDate);
+            // console.log(endDate);
+            if(endDate != null){
+              dispatch(searchCalendarEndDate(endDate));
+            }
+            setStartDate(startDate); 
+            setEndDate(endDate);
+            dispatch(searchCalendarStartDate(startDate));
+            // dispatch(searchCalendarEndDate(endDate));
+          }}
           focusedInput={focused}
           onFocusChange={focusedInput => {
             console.log("react-dates, !!!!");
+            console.log(focusedInput);
             setFocused(focusedInput || "startDate");
             // this.setState({ focusedInput: focusedInput || "startDate" });
           }}
