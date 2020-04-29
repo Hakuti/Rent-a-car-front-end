@@ -10,6 +10,7 @@ import { openModal } from "./Redux/Actions/availabilityModal";
 import { openPriceModal } from "./Redux/Actions/priceModal";
 import { openWizardModal } from "./Redux/Actions/wizardModal";
 import { openLocationModal } from "./Redux/Actions/locationModal";
+import { openSearchCalendarModal } from "./Redux/Actions/searchCalendarModal";
 
 import AvailabilityModalContent from "./components/AvailabilityModal";
 import PriceModalContent from "./components/PriceModal";
@@ -52,6 +53,9 @@ const Routes = () => {
   const isLocationModalOpen = useSelector(
     (state) => state.locationModal.openLocationModal
   );
+  const isSearchCalendarModalOpen = useSelector(
+    (state) => state.searchCalendarModal.openSearchCalendarModal
+  );
   // console.log(isPriceModalOpen);
   // console.log(isPriceModalOpen);
   console.log(isWizardModalOpen);
@@ -60,6 +64,14 @@ const Routes = () => {
   return (
     <div>
       <ModalProvider>
+        {isSearchCalendarModalOpen && (
+          <Modal
+            onClose={() => dispatch(openSearchCalendarModal(false))}
+            style={{ width: 600, textAlign: "center", zIndex: 1000 }}
+          >
+            <div>Poop</div>
+          </Modal>
+        )}
         {isLocationModalOpen && (
           <Modal
             onClose={() => dispatch(openLocationModal(false))}

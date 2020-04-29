@@ -5,9 +5,9 @@ import { searchCalendarDate } from "../../Redux/Actions/searchCalendarDate";
 import { searchFilters } from "../../Redux/Actions/searchFilters";
 import { searchLocation } from "../../Redux/Actions/searchLocation";
 import { searchTimes } from "../../Redux/Actions/searchTimes";
-import { searchTotal } from "../../Redux/Actions/searchlist"
+import { searchTotal } from "../../Redux/Actions/searchlist";
 import { openLocationModal } from "../../Redux/Actions/locationModal";
-
+import { useWindowSize } from "../../Helpers/useWindowResize";
 const DivWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -23,67 +23,73 @@ const DivWrapper = styled.div`
 `;
 const SearchFilterBar = ({ style }) => {
   const dispatch = useDispatch();
+  const [windowWidth, windowHeight] = useWindowSize();
 
   // const total = useSelector((state) => state.searchTotal.searchTotal);
 
   //Temporary variables:
-  const times = useSelector(
-    state => state.searchTimes.searchTimes
-  );
-  const filters = useSelector(
-    state => state.searchFilters.searchFilters
-  );
-  const location = useSelector(
-    state => state.searchLocation.searchLocation
-  );
-  const dates = useSelector(
-    state => state.searchCalendar.searchCalendar
-  );
+  const times = useSelector((state) => state.searchTimes.searchTimes);
+  const filters = useSelector((state) => state.searchFilters.searchFilters);
+  const location = useSelector((state) => state.searchLocation.searchLocation);
+  const dates = useSelector((state) => state.searchCalendar.searchCalendar);
 
   // console.log(`Dates: ${dates}`);
   // console.log(`Times: ${times}`);
   // console.log(`Filters: ${filters}`);
   // console.log(`Location: ${location}`);
 
-  
   return (
     <div style={{ ...barStyles.filterBarWrapper, ...style }}>
       <div style={{ background: "", height: "100%" }}>
-        <DivWrapper>
-          <div
-            style={{ ...barStyles.filterButton }}
-            onClick={() => {
-              dispatch(searchTotal(0));
-              dispatch(searchFilters(!filters)); 
-            }}
-          >
-            Filters - 1
-          </div>
-          <div
-            style={{ ...barStyles.dateButton }}
-            onClick={() => {
-              dispatch(searchCalendarDate(!dates));
-            }}
-          >
-            Mar. 3 - Apr. 10
-          </div>
-          <div
-            style={{ ...barStyles.dateButton }}
-            onClick={() => {
-              dispatch(searchTimes(!times));
-            }}
-          >
-            10:00AM - 12:00PM
-          </div>
-          <div
-            style={{ ...barStyles.dateButton }}
-            onClick={() => {
-              dispatch(searchLocation(!location));
-            }}
-          >
-            Location
-          </div>
-        </DivWrapper>
+        {windowWidth < 950 ? (
+          <DivWrapper>
+            <div
+              style={{ ...barStyles.filterButton }}
+              onClick={() => {
+                dispatch(searchTotal(0));
+                dispatch(searchFilters(!filters));
+              }}
+            >
+              Filters - 1
+            </div>
+            <div
+              style={{ ...barStyles.dateButton }}
+              onClick={() => {
+                dispatch(searchCalendarDate(!dates));
+              }}
+            >
+              Mar. 3 - Apr. 10
+            </div>
+            <div
+              style={{ ...barStyles.dateButton }}
+              onClick={() => {
+                dispatch(searchTimes(!times));
+              }}
+            >
+              10:00AM - 12:00PM
+            </div>
+            <div
+              style={{ ...barStyles.dateButton }}
+              onClick={() => {
+                dispatch(searchLocation(!location));
+              }}
+            >
+              Location
+            </div>
+          </DivWrapper>
+        ) : (
+          <DivWrapper>
+            <div
+              style={{ ...barStyles.filterButton }}
+              onClick={() => {
+                dispatch(searchTotal(0));
+                dispatch(searchFilters(!filters));
+              }}
+            >
+              Filters - 1
+            </div>
+          </DivWrapper>
+        )}
         {/* </div> */}
       </div>
     </div>
@@ -99,7 +105,7 @@ const barStyles = {
     position: "fixed",
     zIndex: 9,
     background: "white",
-    borderBottom: "1px solid lightgray"
+    borderBottom: "1px solid lightgray",
   },
   filterButton: {
     background: "white",
@@ -111,7 +117,7 @@ const barStyles = {
     paddingTop: 7,
     paddingBottom: 7,
     marginLeft: 7,
-    fontSize: 13
+    fontSize: 13,
   },
   dateButton: {
     background: "#2E2E2E",
@@ -123,8 +129,8 @@ const barStyles = {
     paddingTop: 7,
     paddingBottom: 7,
     marginLeft: 7,
-    fontSize: 13
-  }
+    fontSize: 13,
+  },
 };
 
 export default SearchFilterBar;

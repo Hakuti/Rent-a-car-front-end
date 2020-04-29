@@ -3,6 +3,7 @@ import { Virtuoso } from "react-virtuoso";
 import { useSelector, useDispatch } from "react-redux";
 // import { openWizardModal } from "./Redux/Actions/wizardModal";
 import VirtuosoSearchRow from "./VirtuosoSearchRow";
+import ReactLoading from "react-loading";
 export default function VirtuosoSearchVehicleList() {
   const filters = useSelector(state => state.searchFilters.searchFilters);
   const searchTotal = useSelector((state) => state.searchTotal.searchTotal);
@@ -65,8 +66,10 @@ export default function VirtuosoSearchVehicleList() {
         endReached={() => loadMore()}
         footer={() => {
           return (
-            <div style={{ padding: "2rem", textAlign: "center" }}>
-              Loading...
+            <div style={{ padding: "2rem", textAlign: "center", background: "" }}>
+              <div style={{margin: "0 auto", display: "flex", justifyContent: "center"}}>
+              <ReactLoading type={"bubbles"} color="rgb(255, 69, 0)" width={100}></ReactLoading>
+              </div>
             </div>
           );
         }}

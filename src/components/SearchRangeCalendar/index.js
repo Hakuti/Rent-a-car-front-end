@@ -94,6 +94,7 @@ export default function SearchRangeCalendar() {
           onDatesChange={({ startDate, endDate }) => {
             // console.log(startDate);
             // console.log(endDate);
+            console.log("Changed")
             if(endDate != null){
               dispatch(searchCalendarEndDate(endDate));
             }
