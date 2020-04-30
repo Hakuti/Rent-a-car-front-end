@@ -14,7 +14,9 @@ import searchLocationReducer from './searchLocationReducer';
 import searchTimesReducer from './searchTimesReducer';
 import searchTotalReducer from './searchlistReducer';
 import locationModalReducer from './locationModalReducer';
-import searchCalendarModalReducer from './searchCalendarModalReducer'
+import searchCalendarModalReducer from './searchCalendarModalReducer';
+import filtersModalReducer from './filtersModalReducer';
+
 // import counterReducer from './counter'
 
 const rootReducer = (history) => combineReducers({
@@ -31,6 +33,7 @@ const rootReducer = (history) => combineReducers({
   searchLocation: searchLocationReducer,
   searchTotal: searchTotalReducer,
   locationModal: locationModalReducer,
+  filtersModal: filtersModalReducer,
   searchCalendarModal: searchCalendarModalReducer,
   router: connectRouter(history)
 })

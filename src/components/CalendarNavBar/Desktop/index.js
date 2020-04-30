@@ -155,6 +155,7 @@ const DesktopCalendarNavBar = () => {
             top: 70,
             right: 20,
             boxShadow: "0 5px 6px -6px #777",
+            zIndex: 99
           }}
           onMouseLeave={() => setShowProfileMenu(false)}
         >

@@ -6,7 +6,7 @@ import { searchFilters } from "../../Redux/Actions/searchFilters";
 import { searchLocation } from "../../Redux/Actions/searchLocation";
 import { searchTimes } from "../../Redux/Actions/searchTimes";
 import { searchTotal } from "../../Redux/Actions/searchlist";
-import { openLocationModal } from "../../Redux/Actions/locationModal";
+import { openFiltersDesktopModal, openFiltersMobileModal } from "../../Redux/Actions/filtersModal";
 import { useWindowSize } from "../../Helpers/useWindowResize";
 const DivWrapper = styled.div`
   display: flex;
@@ -32,7 +32,9 @@ const SearchFilterBar = ({ style }) => {
   const filters = useSelector((state) => state.searchFilters.searchFilters);
   const location = useSelector((state) => state.searchLocation.searchLocation);
   const dates = useSelector((state) => state.searchCalendar.searchCalendar);
-
+  const isDesktopFiltersModalOpen = useSelector(
+    (state) => state.filtersModal.openFilterDesktopModal
+  );
   // console.log(`Dates: ${dates}`);
   // console.log(`Times: ${times}`);
   // console.log(`Filters: ${filters}`);
@@ -71,10 +73,10 @@ const SearchFilterBar = ({ style }) => {
             <div
               style={{ ...barStyles.dateButton }}
               onClick={() => {
-                dispatch(searchLocation(!location));
+                dispatch(searchCalendarDate(!dates));
               }}
             >
-              Location
+              Lowest to Highest
             </div>
           </DivWrapper>
         ) : (
@@ -82,11 +84,20 @@ const SearchFilterBar = ({ style }) => {
             <div
               style={{ ...barStyles.filterButton }}
               onClick={() => {
-                dispatch(searchTotal(0));
-                dispatch(searchFilters(!filters));
+                dispatch(openFiltersDesktopModal(!isDesktopFiltersModalOpen))
+                // dispatch(searchTotal(0));
+                // dispatch(searchFilters(!filters));
               }}
             >
               Filters - 1
+            </div>
+            <div
+              style={{ ...barStyles.dateButton }}
+              onClick={() => {
+                dispatch(searchCalendarDate(!dates));
+              }}
+            >
+              Lowest to Highest
             </div>
           </DivWrapper>
         )}
