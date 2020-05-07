@@ -8,8 +8,9 @@ import styled, { css } from "styled-components";
 // import { TurrendasInput } from "../../CalendarNavBar/Mobile/index";
 import _ from "lodash";
 import ProfileNavMenuItems from "./MenuItems";
-import SearchRangeCalendar from "../../SearchRangeCalendar";
+// import SearchRangeCalendar from "../../SearchRangeCalendar";
 import { searchCalendarStartFocus } from "../../../Redux/Actions/searchCalendarDate";
+import SearchRangeCalendarDesktop from "../../SearchRangeCalendar";
 
 const container = React.createRef();
 const profileMenu = React.createRef();
@@ -171,7 +172,7 @@ const DesktopCalendarNavBar = () => {
             right: 300,
           }}
         >
-          <SearchRangeCalendar></SearchRangeCalendar>
+          <SearchRangeCalendarDesktop></SearchRangeCalendarDesktop>
         </div>
       )}
       <div style={{ ...navStyles.logoDisplay }}>

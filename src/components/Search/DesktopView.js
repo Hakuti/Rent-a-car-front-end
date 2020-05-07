@@ -51,6 +51,9 @@ export default function DesktopView() {
     };
   }, []);
   const dispatch = useDispatch();
+  if(windowWidth < 951){
+    dispatch(openFiltersDesktopModal(false));
+  }
   const handleClickOutside = (event) => {
     // console.log("Here");
     // console.log(container.current);

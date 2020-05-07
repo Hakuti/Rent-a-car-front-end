@@ -33,6 +33,7 @@ export default function AvailabilityModalContent() {
               {
                 console.log("Clicked");
               dispatch(openPriceModal(true))
+              dispatch(openModal(false))
               }
             }
           >

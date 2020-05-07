@@ -33,6 +33,7 @@ export default function MobileCalendarNavBar() {
     <div
       style={{
         background: "rgb(255, 69, 0)",
+        // background: "linear-gradient(135deg,#ff690f 0%,#ee4719 100%)",
         display: "flex",
         alignItems: "center",
         height: "100%"

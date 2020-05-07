@@ -8,10 +8,11 @@ import { useSelector, useDispatch} from 'react-redux';
 const styles = {
     navBackgroundColor: {
         background: "#FF4500"
+        // background: "linear-gradient(135deg,#ff690f 0%,#ee4719 100%)"
     }
 }
 
-const NavBar = (props) =>{
+const NavBar = (props) => {
     // console.log("Testing Nav Bar")
     const history = useSelector(store => store.router);
     return (

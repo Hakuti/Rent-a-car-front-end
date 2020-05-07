@@ -1,7 +1,7 @@
 import {OPEN_SEARCH_CALENDAR_MODAL} from "../../Constants/actiontypes";
 
 const initialState = {
-    openModal: false
+    openSearchCalendarModal: false
   };
   
   const searchCalendarModalReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const initialState = {
       case OPEN_SEARCH_CALENDAR_MODAL:
         return {
           ...state,
-          openModal: action.payload
+          openSearchCalendarModal: action.payload
         };
       default:
         return state;

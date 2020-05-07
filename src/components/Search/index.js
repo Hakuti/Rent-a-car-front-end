@@ -5,7 +5,8 @@ import MobileView from "./MobileView";
 import { useSelector, useDispatch} from 'react-redux';
 
 const Search = () => {
-    const history = useSelector(store => store.router);
+  const history = useSelector(store => store.router);
+    
   return (
     <ResponsiveLayout
       breakPoint={950}

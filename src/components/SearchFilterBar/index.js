@@ -6,6 +6,7 @@ import { searchFilters } from "../../Redux/Actions/searchFilters";
 import { searchLocation } from "../../Redux/Actions/searchLocation";
 import { searchTimes } from "../../Redux/Actions/searchTimes";
 import { searchTotal } from "../../Redux/Actions/searchlist";
+import { openSearchCalendarModal } from "../../Redux/Actions/searchCalendarModal";
 import { openFiltersDesktopModal, openFiltersMobileModal } from "../../Redux/Actions/filtersModal";
 import { useWindowSize } from "../../Helpers/useWindowResize";
 const DivWrapper = styled.div`
@@ -48,8 +49,9 @@ const SearchFilterBar = ({ style }) => {
             <div
               style={{ ...barStyles.filterButton }}
               onClick={() => {
-                dispatch(searchTotal(0));
-                dispatch(searchFilters(!filters));
+                dispatch(openFiltersMobileModal(true));
+                // dispatch(searchTotal(0));
+                // dispatch(searchFilters(!filters));
               }}
             >
               Filters - 1
@@ -57,7 +59,9 @@ const SearchFilterBar = ({ style }) => {
             <div
               style={{ ...barStyles.dateButton }}
               onClick={() => {
-                dispatch(searchCalendarDate(!dates));
+                dispatch(openSearchCalendarModal(true));
+                
+                // dispatch(searchCalendarDate(!dates));
               }}
             >
               Mar. 3 - Apr. 10

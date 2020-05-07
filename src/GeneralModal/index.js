@@ -2,41 +2,66 @@ import React, { useRef, useContext, useState, useEffect } from "react";
 import ReactDOM from "react-dom";
 import styled, { keyframes } from "styled-components";
 import { useWindowDimensions } from "../components/WindowDimensionsProvider";
+import Locky from "react-locky";
 
 const Context = React.createContext();
 
-export function ModalProvider({children}){
-    const modalRef = useRef();
-    const [context, setContext] = useState();
-    useEffect(() => {
-        setContext(modalRef.current);
-    })
-    return (
+export function ModalProvider({ children }) {
+  const modalRef = useRef();
+  const [context, setContext] = useState();
+  useEffect(() => {
+    setContext(modalRef.current);
+  });
+  return (
     <Container>
-        <Context.Provider value={context}>{children}</Context.Provider>
-        <div ref={modalRef} />
+      <Context.Provider value={context}>{children}</Context.Provider>
+      <div ref={modalRef} />
     </Container>
-    )
+  );
 }
 
-export function Modal({ onClose, children, ...props}){
-    const {height, width} = useWindowDimensions();
-    const widthAsText = width - 40
-    const color = props.xButton ? props.xButton : "gray"
-    console.log(color);
-    const modalNode = useContext(Context);
-    
-    return modalNode ? ReactDOM.createPortal(
-        <Overlay style={{height: height, width: width, background: 'black'}}>
-            <Dialog {...props} style={{height: height, width: '100%', overflowY: 'scroll', overflowX: 'hidden'}}>
-            <div onClick={onClose} style={{right: -widthAsText , position: "relative", fontSize: 24, color: color, zIndex: 1}}><i className="fas fa-times"></i></div>
+export function Modal({ onClose, children, ...props }) {
+  const { height, width } = useWindowDimensions();
+  const widthAsText = width - 40;
+  const color = props.xButton ? props.xButton : "gray";
+  console.log(color);
+  const modalNode = useContext(Context);
+
+  return modalNode
+    ? ReactDOM.createPortal(
+        <Overlay style={{ height: height, width: width, background: "black" }}>
+          <Locky enabled={true}>
+
+          <Dialog
+            {...props}
+            style={{
+              height: height,
+              width: "100%",
+              overflowY: "scroll",
+              overflowX: "hidden",
+            }}
+          >
+            <div
+              onClick={onClose}
+              style={{
+                right: -widthAsText,
+                position: "relative",
+                fontSize: 24,
+                color: color,
+                zIndex: 1,
+              }}
+            >
+              <i className="fas fa-times"></i>
+            </div>
             {/* <button onClick={onClose}>Close</button> */}
 
-                {children}
-            </Dialog>
+            {children}
+          </Dialog>
+          </Locky>
         </Overlay>,
         modalNode
-    ): null;
+      )
+    : null;
 }
 
 const fadeIn = keyframes`from { opacity: 0; }`;
@@ -48,18 +73,18 @@ const Container = styled.div`
 const Overlay = styled.div`
   animation: ${fadeIn} 200ms ease-out;
   position: fixed;
-//   top: -140px;
+  //   top: -140px;
   right: 0;
   bottom: 0;
   width: 100%;
   height: 100vh;
   z-index: 100;
-//   background: black;
+  //   background: black;
   overflow-x: hidden;
 `;
 const Dialog = styled.div`
   background: white;
-//   border-radius: 0px;
+  //   border-radius: 0px;
   padding: 10px;
   position: absolute;
   top: 50%;
@@ -68,9 +93,5 @@ const Dialog = styled.div`
   z-index: 99;
 `;
 export default function GeneralModal() {
-    return (
-        <div>
-            
-        </div>
-    )
+  return <div></div>;
 }

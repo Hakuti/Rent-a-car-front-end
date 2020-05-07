@@ -65,6 +65,7 @@ export default function AvailabilityCalendar() {
         focused={focused}
         date={date}
         renderDayContents={content}
+        noBorder={true}
         // renderDayContents={content}
         daySize={50}
       />

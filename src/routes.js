@@ -17,6 +17,7 @@ import PriceModalContent from "./components/PriceModal";
 import WizardModal from "./components/WizardModal";
 import Search from "./components/Search";
 import LocationModal from "./components/LocationModal";
+import CalendarModal from "./components/CalendarModal";
 
 // import NoMatch from '../components/NoMatch'
 
@@ -58,7 +59,7 @@ const Routes = () => {
   );
   // console.log(isPriceModalOpen);
   // console.log(isPriceModalOpen);
-  console.log(isWizardModalOpen);
+  console.log(isSearchCalendarModalOpen);
   const dispatch = useDispatch();
 
   return (
@@ -69,7 +70,7 @@ const Routes = () => {
             onClose={() => dispatch(openSearchCalendarModal(false))}
             style={{ width: 600, textAlign: "center", zIndex: 1000 }}
           >
-            <div>Poop</div>
+            <CalendarModal></CalendarModal>
           </Modal>
         )}
         {isLocationModalOpen && (
@@ -82,7 +83,7 @@ const Routes = () => {
         )}
         {isAvailabilityModalOpen && (
           <Modal
-            onClose={() => dispatch(openModal(false))}
+            onClose={() => {dispatch(openModal(false))}}
             style={{
               width: 600,
               textAlign: "center",
@@ -94,7 +95,7 @@ const Routes = () => {
         )}
         {isPriceModalOpen && (
           <Modal
-            onClose={() => dispatch(openPriceModal(false))}
+            onClose={() => {dispatch(openPriceModal(false)); dispatch(openModal(true))}}
             style={{
               width: 600,
               textAlign: "center",

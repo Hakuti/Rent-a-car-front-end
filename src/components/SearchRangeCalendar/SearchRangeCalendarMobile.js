@@ -6,10 +6,11 @@ import {
 import moment from "moment";
 // import { ModalProvider, Modal } from "../../GeneralModal";
 import { useSelector, useDispatch } from "react-redux";
+import { useWindowSize } from "../../Helpers/useWindowResize";
 import {searchCalendarStartDate, searchCalendarEndDate } from "../../Redux/Actions/searchCalendarDate";
 // import {openModal} from "../../Redux/Actions/availabilityModal";
 
-export default function SearchRangeCalendarDesktop() {
+export default function SearchRangeCalendarMobile() {
   const startReduxDate = useSelector(
     (state) => state.searchCalendar.searchCalendarStartDate
   );
@@ -27,50 +28,50 @@ export default function SearchRangeCalendarDesktop() {
   const [focused, setFocused] = useState(reduxFocus);
   const [date, setDate] = useState(moment());
   const dispatch = useDispatch();
-
+  const [width, windowHeight] = useWindowSize();
   // const isModalOpen = useSelector(state => state.availabilityModal.openModal);
 
   // const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const content = (props) => {
-    let check = props.format("D");
-    //
-    // console.log(check);
-    return (
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "flex-start",
-        }}
-        onClick={() => {
-          //   dispatch(openModal(true))
-          console.log("Clicked");
-        }}
-      >
-        <p style={{ margin: 0, fontWeight: 600 }}>{check}</p>
-        <p style={{ margin: 0, fontWeight: 100 }}>$33</p>
-      </div>
-    );
-  };
-  const onDateChange = ({ startDate, endDate }) => {
-    console.log(date);
-    console.log(startDate);
-    // setDate(date);
-    setStartDate(startDate);
-    setEndDate(endDate);
-  };
-  const onFocusChange = (focusedInput) => {
-      console.log(focusedInput)
-    //Forced the focus states to always be truthy so date is always selectable
-    // setFocused(true);
-    setFocusInput(focusedInput || "startDate")
-  };
+//   const content = (props) => {
+//     let check = props.format("D");
+//     //
+//     // console.log(check);
+//     return (
+//       <div
+//         style={{
+//           display: "flex",
+//           flexDirection: "column",
+//           justifyContent: "flex-start",
+//         }}
+//         onClick={() => {
+//           //   dispatch(openModal(true))
+//           console.log("Clicked");
+//         }}
+//       >
+//         <p style={{ margin: 0, fontWeight: 600 }}>{check}</p>
+//         <p style={{ margin: 0, fontWeight: 100 }}>$33</p>
+//       </div>
+//     );
+//   };
+//   const onDateChange = ({ startDate, endDate }) => {
+//     console.log(date);
+//     console.log(startDate);
+//     // setDate(date);
+//     setStartDate(startDate);
+//     setEndDate(endDate);
+//   };
+//   const onFocusChange = (focusedInput) => {
+//       console.log(focusedInput)
+//     //Forced the focus states to always be truthy so date is always selectable
+//     // setFocused(true);
+//     setFocusInput(focusedInput || "startDate")
+//   };
 
-  const focusedInputX = (focusedInput) => {
-    console.log(`focusedInput`, focusedInput);
-    setFocusInput({focusedInput});
-  };
+//   const focusedInputX = (focusedInput) => {
+//     console.log(`focusedInput`, focusedInput);
+//     setFocusInput({focusedInput});
+//   };
 
   return (
     <>
@@ -112,6 +113,9 @@ export default function SearchRangeCalendarDesktop() {
           }}
           onBlur={() => console.log("esc")}
           numberOfMonths={2}
+          orientation="vertical"
+          verticalHeight={windowHeight-100}
+          noBorder={true}
         />
       {/* {isModalOpen && (
         <Modal
