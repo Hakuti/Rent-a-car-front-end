@@ -18,6 +18,11 @@
   display: none;
 }
 
+.DayPickerNavigation_button__verticalDefault {
+  /* border: none; */
+  box-shadow: 0px 0px;
+}
+
 /* .CalendarDay__outside {
   background: rgb(255, 69, 0);
 
