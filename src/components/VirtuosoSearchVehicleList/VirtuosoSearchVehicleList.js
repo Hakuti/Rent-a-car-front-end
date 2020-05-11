@@ -5,12 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import VirtuosoSearchRow from "./VirtuosoSearchRow";
 import ReactLoading from "react-loading";
 export default function VirtuosoSearchVehicleList() {
+  const dispatch = useDispatch();
   const filters = useSelector(state => state.searchFilters.searchFilters);
   const searchTotal = useSelector((state) => state.searchTotal.searchTotal);
   const [total, setTotal] = useState(searchTotal);
   const items = useRef([]);
   const virtuoso = useRef(null);
   const loading = useRef(false);
+  const isSearchTimesModalOpen = useSelector((state) => state.searchTimes.searchTimeModalOpen);
   // const isFilterClicked = (false);
   // const searchTotal = useSelector(state => state.searchTotal.searchTotal);
 
@@ -59,7 +61,7 @@ export default function VirtuosoSearchVehicleList() {
     <div>
       <Virtuoso
         ref={virtuoso}
-        style={{ width: "100%", height: "1000px" }}
+        style={isSearchTimesModalOpen ? {width: "100%", height: 500}: {width: "100%", height: 1000}}
         overscan={500}
         totalCount={total}
         item={(index) => <VirtuosoSearchRow index={index} item={items.current[index]}></VirtuosoSearchRow>}

@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import _ from "lodash";
 import { useDebounce, useDebouncedCallback } from "use-debounce";
-
+import {useDispatch} from "react-redux";
+import {openLocationModal} from "../../Redux/Actions/locationModal";
+import {useWindowSize} from "../../Helpers/useWindowResize";
 
 const TurrendasInput = styled.input`
   font-size: 22px;
@@ -27,7 +29,11 @@ const TurrendasInput = styled.input`
 export default function LocationModal() {
   const [locationSearch, setSearchLocation] = useState("");
   const [results, setResults] = useState([]);
-
+  const dispatch = useDispatch();
+  const [width, height] = useWindowSize();
+  if(width > 950){
+    dispatch(openLocationModal(false));
+  }
   const findResults = (e) => {
     setSearchLocation(e.target.value);
   };

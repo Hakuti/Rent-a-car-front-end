@@ -4,11 +4,16 @@ import { useSelector, useDispatch } from "react-redux";
 import { searchCalendarDate } from "../../Redux/Actions/searchCalendarDate";
 import { searchFilters } from "../../Redux/Actions/searchFilters";
 import { searchLocation } from "../../Redux/Actions/searchLocation";
-import { searchTimes } from "../../Redux/Actions/searchTimes";
+import { searchTimes, searchTimesModalOpen } from "../../Redux/Actions/searchTimes";
 import { searchTotal } from "../../Redux/Actions/searchlist";
 import { openSearchCalendarModal } from "../../Redux/Actions/searchCalendarModal";
-import { openFiltersDesktopModal, openFiltersMobileModal } from "../../Redux/Actions/filtersModal";
+import {
+  openFiltersDesktopModal,
+  openFiltersMobileModal,
+} from "../../Redux/Actions/filtersModal";
+import Locky from "react-locky"
 import { useWindowSize } from "../../Helpers/useWindowResize";
+import TimeSelectForm from "../TimeSelectForm";
 const DivWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -36,6 +41,7 @@ const SearchFilterBar = ({ style }) => {
   const isDesktopFiltersModalOpen = useSelector(
     (state) => state.filtersModal.openFilterDesktopModal
   );
+  const isSearchTimesModalOpen = useSelector((state) => state.searchTimes.searchTimeModalOpen)
   // console.log(`Dates: ${dates}`);
   // console.log(`Times: ${times}`);
   // console.log(`Filters: ${filters}`);
@@ -60,7 +66,7 @@ const SearchFilterBar = ({ style }) => {
               style={{ ...barStyles.dateButton }}
               onClick={() => {
                 dispatch(openSearchCalendarModal(true));
-                
+
                 // dispatch(searchCalendarDate(!dates));
               }}
             >
@@ -69,7 +75,7 @@ const SearchFilterBar = ({ style }) => {
             <div
               style={{ ...barStyles.dateButton }}
               onClick={() => {
-                dispatch(searchTimes(!times));
+                dispatch(searchTimesModalOpen(!isSearchTimesModalOpen));
               }}
             >
               10:00AM - 12:00PM
@@ -88,7 +94,7 @@ const SearchFilterBar = ({ style }) => {
             <div
               style={{ ...barStyles.filterButton }}
               onClick={() => {
-                dispatch(openFiltersDesktopModal(!isDesktopFiltersModalOpen))
+                dispatch(openFiltersDesktopModal(!isDesktopFiltersModalOpen));
                 // dispatch(searchTotal(0));
                 // dispatch(searchFilters(!filters));
               }}
@@ -105,6 +111,32 @@ const SearchFilterBar = ({ style }) => {
             </div>
           </DivWrapper>
         )}
+        {windowWidth < 950 && isSearchTimesModalOpen ? (
+          <div style={{height: "600px", background: "rgba(255, 255, 255, 0.75)"}}>
+          <div
+            style={{
+              width: "100%",
+              height: 100,
+              background: "white",
+              borderTop: "1px solid lightgray",
+              borderBottom: "1px solid lightgray",
+              display: "flex",
+              alignItems: "center"
+            }}
+          >
+            <div style={{display: "flex", justifyContent: "center", background: "", width: "100%", height: "100%", alignItems: "center"}}>
+              <div>
+                Start               
+                <TimeSelectForm></TimeSelectForm>               
+              </div>
+              <div>
+                End
+                <TimeSelectForm></TimeSelectForm>
+              </div>
+            </div>
+          </div>
+          </div>
+        ) : null}
         {/* </div> */}
       </div>
     </div>

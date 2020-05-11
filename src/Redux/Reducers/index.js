@@ -16,6 +16,7 @@ import searchTotalReducer from './searchlistReducer';
 import locationModalReducer from './locationModalReducer';
 import searchCalendarModalReducer from './searchCalendarModalReducer';
 import filtersModalReducer from './filtersModalReducer';
+import changeHeightForOverflowReducer from './changeHeightForOverflowReducer';
 
 // import counterReducer from './counter'
 
@@ -35,6 +36,7 @@ const rootReducer = (history) => combineReducers({
   locationModal: locationModalReducer,
   filtersModal: filtersModalReducer,
   searchCalendarModal: searchCalendarModalReducer,
+  changeHeightForOverflow: changeHeightForOverflowReducer,
   router: connectRouter(history)
 })
 
