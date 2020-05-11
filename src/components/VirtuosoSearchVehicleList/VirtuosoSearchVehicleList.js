@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback, useEffect } from "react";
 import { Virtuoso } from "react-virtuoso";
+import {useWindowSize} from "../../Helpers/useWindowResize";
 import { useSelector, useDispatch } from "react-redux";
 // import { openWizardModal } from "./Redux/Actions/wizardModal";
 import VirtuosoSearchRow from "./VirtuosoSearchRow";
@@ -12,6 +13,7 @@ export default function VirtuosoSearchVehicleList() {
   const items = useRef([]);
   const virtuoso = useRef(null);
   const loading = useRef(false);
+  const [width, height] = useWindowSize();
   const isSearchTimesModalOpen = useSelector((state) => state.searchTimes.searchTimeModalOpen);
   // const isFilterClicked = (false);
   // const searchTotal = useSelector(state => state.searchTotal.searchTotal);
@@ -57,11 +59,19 @@ export default function VirtuosoSearchVehicleList() {
     }
     loadMore();
   }, [filters]);
+
+  const setCorrectHeight = () => {
+    if(width < 500){
+      return {width: "100%", height: 350}
+    }else{
+      return {width: "100%", height: 500}
+    }
+  }
   return (
     <div>
       <Virtuoso
         ref={virtuoso}
-        style={isSearchTimesModalOpen ? {width: "100%", height: 500}: {width: "100%", height: 1000}}
+        style={isSearchTimesModalOpen ? setCorrectHeight(): {width: "100%", height: 1000}}
         overscan={500}
         totalCount={total}
         item={(index) => <VirtuosoSearchRow index={index} item={items.current[index]}></VirtuosoSearchRow>}
