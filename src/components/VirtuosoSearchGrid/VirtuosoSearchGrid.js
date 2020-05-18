@@ -13,12 +13,10 @@ const ListContainer = styled.div`
   flex-wrap: wrap;
   margin-left: 30px;
   margin-right: 30px;
-  padding-top: 15px;
 `;
 
 const ItemWrapper = styled.div`
     flex: 1;
-    text-align: center;
     font-size: 80%;
     // padding: 2rem;
     // box-shadow: 0 5px 6px -6px #777;
@@ -36,7 +34,7 @@ const ItemContainer = styled.div`
   display: flex;
   flex: none;
   align-content: stretch;
-  @media(max-width: 1250px){
+  @media (max-width: 1250px) {
     padding-bottom: 20px;
   }
   @media (max-width: 1124px) {
@@ -125,6 +123,76 @@ export default function VirtuosoSearchVehicleGrid() {
           ListContainer={ListContainer}
           item={(index) => (
             <ItemWrapper>
+              <div
+                style={{
+                  display: "flex",
+                  background: "",
+                  opacity: 1,
+                  position: "relative",
+                  top: 50,
+                  height: 50,
+                }}
+              >
+                <div
+                  style={{
+                    flex: 1,
+                    background: "",
+                    display: "flex",
+                    justifyContent: "flex-start",
+                    marginLeft: 10,
+                    alignItems: "center",
+                  }}
+                >
+                  <div
+                    style={{
+                      paddingLeft: 6.5,
+                      paddingRight: 6.5,
+                      paddingBottom: 7,
+                      paddingTop: 7,
+                      background: "white",
+                      borderRadius: 30,
+                      fontSize: 12,
+                      fontFamily: "Roboto-Italic",
+                      color: "rgb(255, 69, 0)"
+                    }}
+                  >
+                    Available
+                  </div>
+                </div>
+                <div
+                  style={{
+                    flex: 1,
+                    background: "",
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    marginRight: 10,
+                    alignItems: "center",
+                  }}
+                >
+                  <div style={{ color: "white", fontSize: 30 }}>
+                    <i className="fas fa-heart" style={{}}></i>
+                  </div>
+                </div>
+              </div>
+              {/* <div
+                style={{
+                  position: "relative",
+                  background: "white",
+                  left: 10,
+                  top: 40,
+                  display: "inline-block",
+                  fontSize: 12,
+                  paddingLeft: 6,
+                  paddingRight: 6,
+                  paddingBottom: 7,
+                  paddingTop: 7,
+                  fontFamily: "Roboto-Regular",
+                  borderRadius: 30,
+                  color: "black"
+                }}
+              >
+                Available
+              </div> */}
 
               <div
                 style={{
@@ -143,7 +211,7 @@ export default function VirtuosoSearchVehicleGrid() {
                     borderTopRightRadius: 5,
                     borderBottomLeftRadius: 5,
                     borderBottomRightRadius: 5,
-                    objectFit: "cover"
+                    objectFit: "cover",
                   }}
                 ></img>
               </div>
@@ -157,10 +225,10 @@ export default function VirtuosoSearchVehicleGrid() {
                   marginLeft: 10,
                   fontFamily: "Roboto-Medium",
                   // background: "orange",
-                  flexWrap: "wrap"
+                  flexWrap: "wrap",
                 }}
               >
-                Chrysler Durango - 2018
+                Aston Martin Vanquish Zagato - 2018
               </div>
               <div
                 style={{
@@ -241,9 +309,9 @@ export default function VirtuosoSearchVehicleGrid() {
                     marginRight: 20,
                     fontSize: 14,
                     color: "black",
-                    position:"relative",
+                    position: "relative",
                     right: 0,
-                    top: -4
+                    top: -4,
                   }}
                 >
                   <div
@@ -257,10 +325,20 @@ export default function VirtuosoSearchVehicleGrid() {
                       paddingTop: 5,
                       justifyContent: "center",
                       alignItems: "center",
-                      display: "flex"
+                      display: "flex",
                     }}
                   >
-                    $12{index}/<p style={{fontFamily: "Roboto-Regular", fontSize: 11, position: "relative"}}>day</p>
+                    $12{index}/
+                    <p
+                      style={{
+                        fontFamily: "Roboto-Regular",
+                        fontSize: 11,
+                        position: "relative",
+                        marginTop: 2,
+                      }}
+                    >
+                      day
+                    </p>
                   </div>
                 </div>
               </div>
