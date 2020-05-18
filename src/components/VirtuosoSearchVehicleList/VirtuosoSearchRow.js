@@ -40,7 +40,7 @@ export default function VirtuosoSearchRow({ index, item }) {
   let top = calcTop();
   const addBottomMargin = () => {
     if(windowWidth < 450){
-      return 20
+      return 50
     }
     return 0
   }
