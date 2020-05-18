@@ -41,7 +41,7 @@ export default function MobileView() {
       {/* <FilterBar style={headerStyle}></FilterBar> */}
 
       <SearchFilterBar style={headerStyle}></SearchFilterBar>
-      <div style={{marginTop: 150 }}>
+      <div style={{marginTop: 130 }}>
         <VirtuosoSearchList></VirtuosoSearchList>
 
 {/*         

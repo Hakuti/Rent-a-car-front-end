@@ -129,7 +129,7 @@ export default function VirtuosoSearchVehicleGrid() {
                   background: "",
                   opacity: 1,
                   position: "relative",
-                  top: 50,
+                  top: 80,
                   height: 50,
                 }}
               >
@@ -153,7 +153,7 @@ export default function VirtuosoSearchVehicleGrid() {
                       borderRadius: 30,
                       fontSize: 12,
                       fontFamily: "Roboto-Italic",
-                      color: "rgb(255, 69, 0)"
+                      color: "rgb(255, 69, 0)",
                     }}
                   >
                     Available
@@ -169,8 +169,9 @@ export default function VirtuosoSearchVehicleGrid() {
                     alignItems: "center",
                   }}
                 >
-                  <div style={{ color: "white", fontSize: 30 }}>
-                    <i className="fas fa-heart" style={{}}></i>
+                  <div style={{ color: "white", opacity: 0.8, fontSize: 30 }}>
+                    {/* <i className="fas fa-heart" style={{}}></i> */}
+                    <i className="far fa-bookmark"></i>
                   </div>
                 </div>
               </div>
@@ -193,7 +194,36 @@ export default function VirtuosoSearchVehicleGrid() {
               >
                 Available
               </div> */}
-
+              <div
+                style={{
+                  display: "flex",
+                  background: "",
+                  opacity: 1,
+                  position: "relative",
+                  top: 250,
+                  height: 30,
+                }}
+              >
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    flex: 1,
+                  }}
+                >
+                  <div
+                    style={{
+                      padding: 5,
+                      opacity: 0.8,
+                      color: "black",
+                      background: "white",
+                      marginRight: 5
+                    }}
+                  >
+                    1km
+                  </div>
+                </div>
+              </div>
               <div
                 style={{
                   height: "70%",
@@ -263,8 +293,20 @@ export default function VirtuosoSearchVehicleGrid() {
                 >
                   4.5
                 </div>
+                <div
+                  style={{
+                    fontSize: 14,
+                    marginLeft: 5,
+                    fontFamily: "Roboto-Regular",
+                    fontWeight: 300,
+                    paddingTop: 3,
+                    color: "black",
+                  }}
+                >
+                  {"(41 trips)"}
+                </div>
               </div>
-              <div style={{ background: "", display: "flex", marginLeft: 10 }}>
+              <div style={{ background: "", display: "flex", marginLeft: 10, }}>
                 <div
                   style={{
                     border: "1px solid black",

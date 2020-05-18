@@ -1,5 +1,6 @@
 import React from "react";
 import { useWindowSize } from "../../Helpers/useWindowResize";
+import VirtuosoSearchRowCard from "./VirtuosoSearchRowCard";
 
 export default function VirtuosoSearchRow({ index, item }) {
   // console.log(index);
@@ -12,6 +13,7 @@ export default function VirtuosoSearchRow({ index, item }) {
   //     return windowWidth * 1.2
   //   }
   // }
+  
   let calcImageHeight = () => {
     // console.log(windowWidth);
     if (windowWidth > 700) {
@@ -44,17 +46,21 @@ export default function VirtuosoSearchRow({ index, item }) {
         background: "white",
         minHeight: 320,
         height: width,
-        maxHeight: 533,
-        maxWidth: 800,
+        maxHeight: 450,
+        maxWidth: 650,
         width: "95%",
         margin: "0 auto",
-        marginBottom: 20,
+        marginTop: 20,
+        // marginBottom: 20,
         position: "relative",
-        borderRadius: 10,
-        boxShadow: "-2px 6px 20px -3px rgba(43,43,43,0.5)",
+        borderRadius: 0,
+        display: "flex",
+        // border: "1px solid black"
+        // boxShadow: "-2px 6px 20px -3px rgba(43,43,43,0.5)",
       }}
     >
-      <div style={{ height: imageHeight, width: "100%", paddingTop: 10 }}>
+      <VirtuosoSearchRowCard image={item}></VirtuosoSearchRowCard>
+      {/* <div style={{ height: imageHeight, width: "100%", paddingTop: 10 }}>
         <div
           style={{
             position: "absolute",
@@ -210,8 +216,8 @@ export default function VirtuosoSearchRow({ index, item }) {
           }}
         >
           Book Now
-        </div> */}
-      </div>
+        </div> /*
+      </div> */}
     </div>
   );
 }
