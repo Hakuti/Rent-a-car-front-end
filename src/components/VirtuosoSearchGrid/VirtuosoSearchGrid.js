@@ -11,33 +11,36 @@ import logoLoadingIcon from "../../Logo/ugo_loading_icon_2x.png";
 const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  margin-left: 30px;
+  margin-right: 30px;
 `;
 
 const ItemWrapper = styled.div`
     flex: 1;
     text-align: center;
     font-size: 80%;
-    padding: 2rem;
-    box-shadow: 0 5px 6px -6px #777;
-    background: white;
-    margin-right: 5px;
+    // padding: 2rem;
+    // box-shadow: 0 5px 6px -6px #777;
     margin-bottom: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
     border-radius: 5px;
+    // background: orange;
   }
 `;
 const ItemContainer = styled.div`
   // padding: 0.5rem;
-  height: 300px;
-  width: 25%;
-  background: #f5f5f5;
+  height: 380px;
+  width: 33.3%;
   display: flex;
   flex: none;
   align-content: stretch;
-
-  @media (max-width: 1024px) {
-    width: 33%;
+  @media(max-width: 1250px){
+    padding-bottom: 20px;
   }
-
+  @media (max-width: 1124px) {
+    width: 50%;
+  }
   @media (max-width: 768px) {
     width: 50%;
   }
@@ -56,7 +59,12 @@ export default function VirtuosoSearchVehicleGrid() {
   const loading = useRef(false);
   const [initialLoad, setLoad] = useState(false);
   const [windowWidth, windowHeight] = useWindowSize();
-
+  const widthAdjusted = () => {
+    if (windowWidth < 1024 && windowWidth > 951) {
+      return windowWidth * 0.5;
+    }
+    return windowWidth * 0.25;
+  };
   // const isFilterClicked = (false);
   // const searchTotal = useSelector(state => state.searchTotal.searchTotal);
 
@@ -120,7 +128,148 @@ export default function VirtuosoSearchVehicleGrid() {
           totalCount={total}
           ItemContainer={ItemContainer}
           ListContainer={ListContainer}
-          item={(index) => <ItemWrapper>Item {index}</ItemWrapper>}
+          item={(index) => (
+            <ItemWrapper>
+
+              <div
+                style={{
+                  height: "70%",
+                  display: "flex",
+                  flex: 1,
+                  justifyContent: "flex-start",
+                }}
+              >
+                <img
+                  src={items.current[index]}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    borderTopLeftRadius: 5,
+                    borderTopRightRadius: 5,
+                    borderBottomLeftRadius: 5,
+                    borderBottomRightRadius: 5,
+                  }}
+                ></img>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  textAlign: "start",
+                  fontSize: 21,
+                  color: "black",
+                  marginLeft: 10,
+                  fontFamily: "Roboto-Medium",
+                  // background: "orange",
+                  flexWrap: "wrap"
+                }}
+              >
+                Chrysler Durango - 2018
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  justifyContent: "flex-start",
+                  marginLeft: 12,
+                  alignItems: "center",
+                  background: "",
+                  position: "relative",
+                  top: -5,
+                  background: "",
+                }}
+              >
+                {" "}
+                <i
+                  className="fas fa-star"
+                  style={{
+                    color: "rgb(255, 69, 0)",
+                    fontSize: 18,
+                    background: "",
+                  }}
+                ></i>
+                <div
+                  style={{
+                    fontSize: 18,
+                    marginLeft: 5,
+                    fontFamily: "Roboto-Regular",
+                    fontWeight: 300,
+                    paddingTop: 3,
+                    color: "black",
+                  }}
+                >
+                  4.5
+                </div>
+              </div>
+              <div style={{ background: "", display: "flex", marginLeft: 10 }}>
+                <div
+                  style={{
+                    border: "1px solid black",
+                    borderRadius: 5,
+                    width: "100px",
+                    height: "25px",
+                    fontFamily: "Roboto-Medium",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "black",
+                    background: "",
+                  }}
+                >
+                  GRAND HOST
+                </div>
+                <div
+                  style={{
+                    marginLeft: 5,
+                    border: "1px solid rgb(46, 46, 46)",
+                    borderRadius: 5,
+                    width: "100px",
+                    height: "25px",
+                    fontFamily: "Roboto-Regular",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    color: "white",
+                    background: "#100301",
+                  }}
+                >
+                  MANUAL
+                </div>
+                <div
+                  style={{
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    background: "",
+                    flex: 1,
+                    alignItems: "center",
+                    fontFamily: "Roboto-Medium",
+                    marginRight: 20,
+                    fontSize: 14,
+                    color: "black",
+                    position:"relative",
+                    right: 0,
+                    top: -4
+                  }}
+                >
+                  <div
+                    style={{
+                      background: "rgb(255, 69, 0)",
+                      color: "white",
+                      borderRadius: 300,
+                      paddingRight: 7,
+                      paddingLeft: 7,
+                      paddingBottom: 5,
+                      paddingTop: 5,
+                      justifyContent: "center",
+                      alignItems: "center",
+                      display: "flex"
+                    }}
+                  >
+                    $12{index}/<p style={{fontFamily: "Roboto-Regular", fontSize: 11, position: "relative"}}>day</p>
+                  </div>
+                </div>
+              </div>
+            </ItemWrapper>
+          )}
           // item={(index) => <div>Hello {index}</div>}
           endReached={() => loadMore()}
           footer={() => {

@@ -15,6 +15,9 @@ import SearchRangeCalendarDesktop from "../../SearchRangeCalendar";
 const container = React.createRef();
 const profileMenu = React.createRef();
 const calendarMenu = React.createRef();
+const startTimeOptionMenu = React.createRef();
+const startTimeOptionMenuInner = React.createRef();
+const endTimeOptionMenu = React.createRef();
 export const TurrendasInput = styled.input`
   font-size: 22px;
   text-align: left;
@@ -58,6 +61,8 @@ const DesktopCalendarNavBar = () => {
   const location = useSelector((store) => store.location);
   const [showProfileMenu, setShowProfileMenu] = useState(false);
   const [showCalendarMenu, setShowCalendarMenu] = useState(false);
+  const [showStartTimeOption, setShowStartTimeOption] = useState(false);
+  const [showEndTimeOption, setShowEndTimeOption] = useState(false);
   const dispatch = useDispatch();
 
   const startDate = useSelector(
@@ -80,6 +85,18 @@ const DesktopCalendarNavBar = () => {
     }
     if (calendarMenu.current && !calendarMenu.current.contains(event.target)) {
       setShowCalendarMenu(false);
+    }
+    if (
+      startTimeOptionMenu.current &&
+      !startTimeOptionMenu.current.contains(event.target)
+    ) {
+      setShowStartTimeOption(false);
+    }
+    if (
+      endTimeOptionMenu.current &&
+      !endTimeOptionMenu.current.contains(event.target)
+    ) {
+      setShowEndTimeOption(false);
     }
   };
 
@@ -156,7 +173,7 @@ const DesktopCalendarNavBar = () => {
             top: 70,
             right: 20,
             boxShadow: "0 5px 6px -6px #777",
-            zIndex: 99
+            zIndex: 99,
           }}
           onMouseLeave={() => setShowProfileMenu(false)}
         >
@@ -174,6 +191,22 @@ const DesktopCalendarNavBar = () => {
         >
           <SearchRangeCalendarDesktop></SearchRangeCalendarDesktop>
         </div>
+      )}
+      {showStartTimeOption && (
+        <div
+          ref={startTimeOptionMenu}
+          style={{ height: 50, width: 100, position: "absolute", top: 60, right: "38%" }}
+        >
+          <select style={{background: "Roboto-Regular", fontSize: 14}} ref={startTimeOptionMenuInner} >
+            <option value="grapefruit">Grapefruit</option>
+            <option value="lime">Lime</option>
+            <option value="coconut">Coconut</option>
+            <option value="mango">Mango</option>
+          </select>
+        </div>
+      )}
+      {showEndTimeOption && (
+        <div ref={endTimeOptionMenu} style={{ position: "absolute" }}></div>
       )}
       <div style={{ ...navStyles.logoDisplay }}>
         {/* <div style={{ background: "", width: "27%" }}> */}
@@ -241,7 +274,16 @@ const DesktopCalendarNavBar = () => {
                 <i className="fas fa-chevron-down"></i>
               </span>
             </div>
-            <div style={{ ...navStyles.startTime }}>
+            <div
+              style={{ ...navStyles.startTime }}
+              onClick={() => {
+                setShowStartTimeOption(!showStartTimeOption);
+                console.log(startTimeOptionMenu);
+                console.log(startTimeOptionMenuInner.current);
+                startTimeOptionMenuInner.current.focus();
+                console.log("Clicked");
+              }}
+            >
               10:00AM{" "}
               <span className="icon">
                 <i className="fas fa-chevron-down"></i>

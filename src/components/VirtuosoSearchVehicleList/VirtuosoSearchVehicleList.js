@@ -59,7 +59,7 @@ export default function VirtuosoSearchVehicleList() {
     }
     loadMore();
   }, [filters]);
-
+  //Temp func for setting a better overflow for mobile
   const setCorrectHeight = () => {
     if(width < 500){
       return {width: "100%", height: 350}

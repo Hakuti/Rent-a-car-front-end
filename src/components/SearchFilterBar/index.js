@@ -30,7 +30,7 @@ const DivWrapper = styled.div`
 const SearchFilterBar = ({ style }) => {
   const dispatch = useDispatch();
   const [windowWidth, windowHeight] = useWindowSize();
-
+  
   // const total = useSelector((state) => state.searchTotal.searchTotal);
 
   //Temporary variables:
@@ -42,6 +42,9 @@ const SearchFilterBar = ({ style }) => {
     (state) => state.filtersModal.openFilterDesktopModal
   );
   const isSearchTimesModalOpen = useSelector((state) => state.searchTimes.searchTimeModalOpen)
+  if(windowWidth > 950){
+    dispatch(searchTimesModalOpen(false))
+  }
   // console.log(`Dates: ${dates}`);
   // console.log(`Times: ${times}`);
   // console.log(`Filters: ${filters}`);
