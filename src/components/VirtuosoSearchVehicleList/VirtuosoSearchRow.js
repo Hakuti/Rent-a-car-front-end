@@ -38,6 +38,12 @@ export default function VirtuosoSearchRow({ index, item }) {
   };
   let imageHeight = calcImageHeight();
   let top = calcTop();
+  const addBottomMargin = () => {
+    if(windowWidth < 450){
+      return 20
+    }
+    return 0
+  }
   // console.log(imageHeight);
   // const title = `${index + 1}. ${user.name}`;
   return (
@@ -51,6 +57,7 @@ export default function VirtuosoSearchRow({ index, item }) {
         width: "95%",
         margin: "0 auto",
         marginTop: 20,
+        marginBottom: addBottomMargin(),
         // marginBottom: 20,
         position: "relative",
         borderRadius: 0,
