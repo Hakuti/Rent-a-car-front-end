@@ -13,6 +13,7 @@ const ListContainer = styled.div`
   flex-wrap: wrap;
   margin-left: 30px;
   margin-right: 30px;
+  padding-top: 15px;
 `;
 
 const ItemWrapper = styled.div`
@@ -59,12 +60,6 @@ export default function VirtuosoSearchVehicleGrid() {
   const loading = useRef(false);
   const [initialLoad, setLoad] = useState(false);
   const [windowWidth, windowHeight] = useWindowSize();
-  const widthAdjusted = () => {
-    if (windowWidth < 1024 && windowWidth > 951) {
-      return windowWidth * 0.5;
-    }
-    return windowWidth * 0.25;
-  };
   // const isFilterClicked = (false);
   // const searchTotal = useSelector(state => state.searchTotal.searchTotal);
 
@@ -148,6 +143,7 @@ export default function VirtuosoSearchVehicleGrid() {
                     borderTopRightRadius: 5,
                     borderBottomLeftRadius: 5,
                     borderBottomRightRadius: 5,
+                    objectFit: "cover"
                   }}
                 ></img>
               </div>

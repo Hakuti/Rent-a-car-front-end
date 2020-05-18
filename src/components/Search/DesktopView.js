@@ -68,7 +68,7 @@ export default function DesktopView() {
       <div
         style={{
           position: "absolute",
-          top: 140,
+          top: 130,
           background: "",
           width: "100%",
         }}
