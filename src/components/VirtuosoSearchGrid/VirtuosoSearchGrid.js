@@ -13,6 +13,7 @@ const ListContainer = styled.div`
   flex-wrap: wrap;
   margin-left: 30px;
   margin-right: 30px;
+  justify-content: center;
 `;
 
 const ItemWrapper = styled.div`
@@ -31,6 +32,7 @@ const ItemContainer = styled.div`
   // padding: 0.5rem;
   height: 380px;
   width: 33.3%;
+  max-width: 500px;
   display: flex;
   flex: none;
   align-content: stretch;

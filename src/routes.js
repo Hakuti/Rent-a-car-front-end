@@ -18,6 +18,7 @@ import WizardModal from "./components/WizardModal";
 import Search from "./components/Search";
 import LocationModal from "./components/LocationModal";
 import CalendarModal from "./components/CalendarModal";
+import Home from "./components/Home";
 
 // import NoMatch from '../components/NoMatch'
 
@@ -83,7 +84,9 @@ const Routes = () => {
         )}
         {isAvailabilityModalOpen && (
           <Modal
-            onClose={() => {dispatch(openModal(false))}}
+            onClose={() => {
+              dispatch(openModal(false));
+            }}
             style={{
               width: 600,
               textAlign: "center",
@@ -95,7 +98,10 @@ const Routes = () => {
         )}
         {isPriceModalOpen && (
           <Modal
-            onClose={() => {dispatch(openPriceModal(false)); dispatch(openModal(true))}}
+            onClose={() => {
+              dispatch(openPriceModal(false));
+              dispatch(openModal(true));
+            }}
             style={{
               width: 600,
               textAlign: "center",
@@ -122,8 +128,11 @@ const Routes = () => {
         <Switch>
           {/* <Route exact path="/home" component={Game} /> */}
           {/* <Route path="/game" component={Game} /> */}
+          {/* <Route path="/" component={Home}></Route> */}
           <Route path="/search" component={Search}></Route>
           <Route path="/host" component={Host}></Route>
+          <Route path="/" component={Home}></Route>
+
           {/* <Route exact path="/hosted-vehicles" component={HostVehicles}></Route> */}
           {/* <Route component={NoMatch} /> */}
         </Switch>
