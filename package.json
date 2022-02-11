@@ -16,7 +16,7 @@
     "final-form": "^4.18.7",
     "moment": "^2.24.0",
     "node": "^12.4.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "rc-time-picker": "^3.7.3",
     "react": "^16.12.0",
     "react-dates": "^21.8.0",
